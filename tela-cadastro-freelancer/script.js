@@ -1,9 +1,4 @@
 // npx json-server --watch db.json --port 3000
-/* Pendências
-1. Campo condicional: produtor fixo 
-2. Botão Voltar
-3. Validação preenchimento do cadastro
-4. Confirmação das operações */
 
 const API_URL = "http://localhost:3000/freelancers";
 const form = document.querySelector("#form-CadastroFreela");
@@ -13,10 +8,16 @@ const inputEmail = document.querySelector("#email");
 const inputTelefone = document.querySelector("#telefone");
 const inputCepResidencial = document.querySelector("#cep-res");
 const inputEnderecoResidencial = document.querySelector("#endereco-res");
+const inputNumeroResidencial = document.querySelector("#numero-res");
+const inputBairroResidencial = document.querySelector("#bairro-res");
 const inputCidadeResidencial = document.querySelector("#cidade-res");
 const inputEstadoResidencial = document.querySelector("#estado-res");
+const inputComplementoResidencial = document.querySelector("#complemento-res");
 const inputSenha = document.querySelector("#senha");
 const inputConfirmaSenha = document.querySelector("#senha-confirma");
+const inputNumeroComercial = document.querySelector("#numero-com");
+const inputBairroComercial = document.querySelector("#bairro-com");
+const inputComplementoComercial = document.querySelector("#complemento-com");
 const inputCepComercial = document.querySelector("#cep-com");
 const inputEnderecoComercial = document.querySelector("#endereco-com");
 const inputCidadeComercial = document.querySelector("#cidade-com");
@@ -30,15 +31,73 @@ const inputFaturamentoMedio = document.querySelector("#faturamento");
 const checkEnderecoComercialIgualResidencial = document.querySelector("#mesmo-endereco");
 const inputPesquisaFreela = document.querySelector("#pesquisaFreela");
 const buttonPesquisar = document.querySelector("#btn-pesquisar");
-var freelaID = "";
+let freelaID = "";
 
-// Check se Senhas correspondem
-function verificaSenhasConferem() {
-    if(inputSenha.value === inputConfirmaSenha.value) {
-        return true;
-    }
-    else {
+// Verifica Validade da Senha
+// Possuir mínimo de 10 caracteres, uma letra maiúscula, uma letra minúscula, um número e um caracter especial
+// Senha e Confirmação devem ser iguais
+function senhaEhValida(senha, confirmacaoSenha) {
+    const regexMaiusculas = /^[A-Z]+$/;
+    const regexMinusculas = /^[a-z]+$/;
+    const regexNumeros = /^[0-9]+$/;
+    const regexEspecial = /[\W_]/;
+    let temUmCaractereMaiusculo = false;
+    let temUmCaractereMinusculo = false;
+    let temUmCaractereEspecial = false;
+    let temUmNumero = false;
+    const minimumSenhaLength = 10;
+
+    for (let index = 0; index < senha.length; index++) {
+        if(regexMaiusculas.test(senha[index])) {temUmCaractereMaiusculo = true;}     
+        if(regexMinusculas.test(senha[index])) {temUmCaractereMinusculo = true;}
+        if(regexNumeros.test(senha[index])) {temUmNumero = true;}
+        if(regexEspecial.test(senha[index])) {temUmCaractereEspecial = true;}
+    };
+    
+    if(!temUmCaractereMaiusculo || !temUmCaractereMinusculo ||
+       !temUmNumero || !temUmCaractereEspecial || senha.length < minimumSenhaLength) 
+    {
+        alert("A senha deve ter no mínimo 10 caracteres e incluir obrigatoriamente uma letra maiúscula, uma letra minúscula, um número e um caractere especial.");
         return false;
+    }
+
+    if(senha != confirmacaoSenha) {
+        alert("As senhas digitadas não correspondem.");
+        return false;
+    }
+
+    return true;
+}
+
+// Campo condicional Produtor fixo
+const inputProdutorSim = document.querySelector("#produtor-sim");
+const inputProdutorNao = document.querySelector("#produtor-nao");
+
+function ExibeOcultaCampoProdutorFixo() {
+    if(inputProdutorSim.checked) {
+        inputNomeProdutor.removeAttribute("hidden");
+    } 
+    else {
+        inputNomeProdutor.setAttribute("hidden", "");
+    } 
+}
+
+inputProdutorSim.addEventListener("click", () => {
+    ExibeOcultaCampoProdutorFixo();
+})
+
+inputProdutorNao.addEventListener("click", () => {
+    ExibeOcultaCampoProdutorFixo();
+})
+
+// Se Produtor Fixo = Sim então obriga o preenchimento do nome do produtor
+function preenchimentoProdutorFixo() {
+    if(inputProdutorSim.checked && inputNomeProdutor.value === "") {
+        alert("Informe o Nome do Produtor Fixo.");
+        return false;
+    }
+    else { 
+        return true; 
     }
 }
 
@@ -50,43 +109,35 @@ checkEnderecoComercialIgualResidencial.addEventListener("click", () => {
 function habilitarDesabilitarCampoEnderecoComercial() {
     if(checkEnderecoComercialIgualResidencial.checked) {
         inputCepComercial.disabled = true;
-        inputEnderecoComercial.disabled = true;
-        inputCidadeComercial.disabled = true;
-        inputEstadoComercial.disabled = true;
-        igualaEnderecoResidencialEComercial();
+        inputNumeroComercial.disabled = true;
+        inputComplementoComercial.disabled = true;
+        inputCepComercial.value = "";
+        inputEnderecoComercial.value = "";
+        inputNumeroComercial.value = "";
+        inputBairroComercial.value = "";
+        inputComplementoComercial.value = "";
+        inputCidadeComercial.value = "";
+        inputEstadoComercial.value = "";
     }
     else {
         inputCepComercial.disabled = false;
-        inputEnderecoComercial.disabled = false;
-        inputCidadeComercial.disabled = false;
-        inputEstadoComercial.disabled = false;
-        igualaEnderecoResidencialEComercial();
-    }
-}
-
-function igualaEnderecoResidencialEComercial() {
-    if(checkEnderecoComercialIgualResidencial.checked) {
-        inputCepComercial.value = inputCepResidencial.value;
-        inputEnderecoComercial.value = inputEnderecoResidencial.value;
-        inputCidadeComercial.value = inputCidadeResidencial.value;
-        inputEstadoComercial.value = inputEstadoResidencial.value;
-    }
-    else {
-        inputCepComercial.value = "";
-        inputEnderecoComercial.value = "";
-        inputCidadeComercial.value = "";
-        inputEstadoComercial.value = "";
+        inputNumeroComercial.disabled = false;
+        inputComplementoComercial.disabled = false;
     }
 }
 
 // Pesquisar/Carregar um cadastro
 buttonPesquisar.addEventListener("click", function() {
+    if(inputPesquisaFreela.value === "") {
+        return;
+    }
     freelaID = inputPesquisaFreela.value;
     inputPesquisaFreela.value = "";
     carregarCadastro(freelaID);
 });
 
 async function carregarCadastro(ID) {
+    try{
     const resposta = await fetch(`${API_URL}/${ID}`);
 
     if(resposta.status===404) {
@@ -95,27 +146,30 @@ async function carregarCadastro(ID) {
     }
 
     const freelancer = await resposta.json();
+
     inputNome.value = freelancer.nome;
     inputDataNascimento.value = freelancer.dataNascimento;
     inputEmail.value = freelancer.email;
     inputTelefone.value = freelancer.telefone;
     inputCepResidencial.value = freelancer.cepResidencial;
     inputEnderecoResidencial.value = freelancer.enderecoResidencial;
+    inputNumeroResidencial.value = freelancer.numeroResidencial;
+    inputBairroResidencial.value = freelancer.bairroResidencial;
+    inputComplementoResidencial.value = freelancer.complementoResidencial;
     inputCidadeResidencial.value = freelancer.cidadeResidencial;
     inputEstadoResidencial.value = freelancer.estadoResidencial;
     inputSenha.value = freelancer.senha;
 
     if(freelancer.enderecoComercialIgualResidencial) {
         checkEnderecoComercialIgualResidencial.checked = true;
-        inputCepComercial.value = freelancer.cepResidencial;
-        inputEnderecoComercial.value = freelancer.enderecoResidencial;
-        inputCidadeComercial.value = freelancer.cidadeResidencial;
-        inputEstadoComercial.value = freelancer.estadoResidencial;
-        habilitarDesabilitarCampoEnderecoComercial();
+        habilitarDesabilitarCampoEnderecoComercial();        
     }
     else {
         inputCepComercial.value = freelancer.cepComercial;
         inputEnderecoComercial.value = freelancer.enderecoComercial;
+        inputNumeroComercial.value = freelancer.numeroComercial;
+        inputBairroComercial.value = freelancer.bairroComercial;
+        inputComplementoComercial.value = freelancer.complementoComercial;
         inputCidadeComercial.value = freelancer.cidadeComercial;
         inputEstadoComercial.value = freelancer.estadoComercial;
     }
@@ -175,19 +229,31 @@ async function carregarCadastro(ID) {
     }
 
     inputFaturamentoMedio.value = freelancer.faturamentoMedio;
+
+    ExibeOcultaCampoProdutorFixo();
+
+        } catch (erro) {
+        console.error(erro);
+    }
 }
 
 // Criar novo cadastro
 form.addEventListener("submit", async function(evento) {
     evento.preventDefault();
-    if(!verificaSenhasConferem()) {
-        alert("As senhas digitadas são diferentes.")
+    
+    if (!form.reportValidity()) {
+        console.log(form.reportValidity());
+        return;
+    }
+
+    if(!senhaEhValida(inputSenha.value, inputConfirmaSenha.value) || 
+       !preenchimentoProdutorFixo()) {
         return;
     }
 
     const containerRadiosTipoNegocios = document.querySelector("#radio-card-tipo-negocio");
     const radiosTipoNegocios = containerRadiosTipoNegocios.querySelectorAll("input");
-    var tipoNegocioSelecionado = "";
+    let tipoNegocioSelecionado = "";
     for (const tipoNegocio of radiosTipoNegocios) {
         if(tipoNegocio.checked){
             tipoNegocioSelecionado = tipoNegocio.value;
@@ -196,7 +262,7 @@ form.addEventListener("submit", async function(evento) {
 
     const containerChipEspecialidades = document.querySelector("#CheckboxEspecialidades");
     const chipEspecialidades = containerChipEspecialidades.querySelectorAll("input");
-    var especialidadesSelecionadas = [];
+    let especialidadesSelecionadas = [];
     for (const especialidade of chipEspecialidades) {
         if(especialidade.checked){
             especialidadesSelecionadas.push(especialidade.value);
@@ -205,7 +271,7 @@ form.addEventListener("submit", async function(evento) {
     
     const containerMaquinas = document.querySelector("#CheckboxMaquinas");
     const chipMaquinas = containerMaquinas.querySelectorAll("input");
-    var maquinasSelecionadas = [];
+    let maquinasSelecionadas = [];
     for (const maquina of chipMaquinas) {
         if(maquina.checked){
             maquinasSelecionadas.push(maquina.value);
@@ -214,7 +280,7 @@ form.addEventListener("submit", async function(evento) {
 
     const containerPreferencias = document.querySelector("#CheckboxPreferencias");
     const checkboxPreferencias = containerPreferencias.querySelectorAll("input");
-    var preferenciasSelecionadas = [];
+    let preferenciasSelecionadas = [];
     for (const preferencia of checkboxPreferencias) {
         if(preferencia.checked){
             preferenciasSelecionadas.push(preferencia.value);
@@ -222,7 +288,7 @@ form.addEventListener("submit", async function(evento) {
     }
     
     const inputProdutorSim = document.querySelector("#produtor-sim");
-    var isProdutorFixo = "";
+    let isProdutorFixo = "";
     if (inputProdutorSim.checked) {
             isProdutorFixo = true;
     }       
@@ -231,7 +297,7 @@ form.addEventListener("submit", async function(evento) {
     }
 
     const inputVeiculoSim = document.querySelector("#veiculo-sim");
-    var isCarroProprio = "";
+    let isCarroProprio = "";
     if (inputVeiculoSim.checked) {
             isCarroProprio = true;
         }       
@@ -239,7 +305,7 @@ form.addEventListener("submit", async function(evento) {
             isCarroProprio = false;
         }
 
-    var isEnderecoComercialIgualResidencial = "";
+    let isEnderecoComercialIgualResidencial = "";
     if(checkEnderecoComercialIgualResidencial.checked){
         isEnderecoComercialIgualResidencial = true;
     }
@@ -255,11 +321,17 @@ form.addEventListener("submit", async function(evento) {
             telefone: inputTelefone.value,
             cepResidencial: inputCepResidencial.value,
             enderecoResidencial: inputEnderecoResidencial.value,
+            numeroResidencial: inputNumeroResidencial.value,
+            bairroResidencial: inputBairroResidencial.value,
+            complementoResidencial: inputComplementoResidencial.value,
             cidadeResidencial: inputCidadeResidencial.value,
             estadoResidencial: inputEstadoResidencial.value,
             senha: inputSenha.value,
             cepComercial: inputCepComercial.value,
             enderecoComercial: inputEnderecoComercial.value,
+            numeroComercial: inputNumeroComercial.value,
+            bairroComercial: inputBairroComercial.value,
+            complementoComercial: inputComplementoComercial.value,
             cidadeComercial: inputCidadeComercial.value,
             estadoComercial: inputEstadoComercial.value,
             tipoNegocio: tipoNegocioSelecionado,
@@ -277,11 +349,18 @@ form.addEventListener("submit", async function(evento) {
             enderecoComercialIgualResidencial: isEnderecoComercialIgualResidencial
     }
 
-    await fetch(API_URL, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(novoFreelancer)
-    });
+    try { 
+        await fetch(API_URL, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(novoFreelancer)
+        });
+
+        alert("Cadastro realizado com sucesso! Você será redirecionado para a página inicial.");
+    }
+    catch (erro) {
+        console.error(erro);
+    }
 })
 
 // Atualizar/Editar um cadastro
@@ -291,9 +370,20 @@ buttonEditar.addEventListener("click", function() {
 });
 
 async function atualizarFreelancer(ID){
+
+    if (!form.reportValidity()) {
+        console.log(form.reportValidity());
+        return;
+    }
+
+    if(!senhaEhValida(inputSenha.value, inputConfirmaSenha.value) || 
+       !preenchimentoProdutorFixo()) {
+        return;
+    }
+
     const containerRadiosTipoNegocios = document.querySelector("#radio-card-tipo-negocio");
     const radiosTipoNegocios = containerRadiosTipoNegocios.querySelectorAll("input");
-    var tipoNegocioSelecionado = "";
+    let tipoNegocioSelecionado = "";
     for (const tipoNegocio of radiosTipoNegocios) {
         if(tipoNegocio.checked){
             tipoNegocioSelecionado = tipoNegocio.value;
@@ -302,7 +392,7 @@ async function atualizarFreelancer(ID){
 
     const containerChipEspecialidades = document.querySelector("#CheckboxEspecialidades");
     const chipEspecialidades = containerChipEspecialidades.querySelectorAll("input");
-    var especialidadesSelecionadas = [];
+    let especialidadesSelecionadas = [];
     for (const especialidade of chipEspecialidades) {
         if(especialidade.checked){
             especialidadesSelecionadas.push(especialidade.value);
@@ -311,7 +401,7 @@ async function atualizarFreelancer(ID){
     
     const containerMaquinas = document.querySelector("#CheckboxMaquinas");
     const chipMaquinas = containerMaquinas.querySelectorAll("input");
-    var maquinasSelecionadas = [];
+    let maquinasSelecionadas = [];
     for (const maquina of chipMaquinas) {
         if(maquina.checked){
             maquinasSelecionadas.push(maquina.value);
@@ -320,7 +410,7 @@ async function atualizarFreelancer(ID){
 
     const containerPreferencias = document.querySelector("#CheckboxPreferencias");
     const checkboxPreferencias = containerPreferencias.querySelectorAll("input");
-    var preferenciasSelecionadas = [];
+    let preferenciasSelecionadas = [];
     for (const preferencia of checkboxPreferencias) {
         if(preferencia.checked){
             preferenciasSelecionadas.push(preferencia.value);
@@ -328,7 +418,7 @@ async function atualizarFreelancer(ID){
     }
 
     const inputProdutorSim = document.querySelector("#produtor-sim");
-    var isProdutorFixo = "";
+    let isProdutorFixo = "";
     if (inputProdutorSim.checked) {
             isProdutorFixo = true;
     }       
@@ -338,7 +428,7 @@ async function atualizarFreelancer(ID){
     }
 
     const inputVeiculoSim = document.querySelector("#veiculo-sim");
-    var isCarroProprio = "";
+    let isCarroProprio = "";
     if (inputVeiculoSim.checked) {
             isCarroProprio = true;
         }       
@@ -346,7 +436,7 @@ async function atualizarFreelancer(ID){
             isCarroProprio = false;
         }
 
-    var isEnderecoComercialIgualResidencial = "";
+    let isEnderecoComercialIgualResidencial = "";
     if(checkEnderecoComercialIgualResidencial.checked){
         isEnderecoComercialIgualResidencial = true;
     }
@@ -361,11 +451,17 @@ async function atualizarFreelancer(ID){
             telefone: inputTelefone.value,
             cepResidencial: inputCepResidencial.value,
             enderecoResidencial: inputEnderecoResidencial.value,
+            numeroResidencial: inputNumeroResidencial.value,
+            bairroResidencial: inputBairroResidencial.value,
+            complementoResidencial: inputComplementoResidencial.value,            
             cidadeResidencial: inputCidadeResidencial.value,
             estadoResidencial: inputEstadoResidencial.value,
             senha: inputSenha.value,
             cepComercial: inputCepComercial.value,
             enderecoComercial: inputEnderecoComercial.value,
+            numeroComercial: inputNumeroComercial.value,
+            bairroComercial: inputBairroComercial.value,
+            complementoComercial: inputComplementoComercial.value,            
             cidadeComercial: inputCidadeComercial.value,
             estadoComercial: inputEstadoComercial.value,
             tipoNegocio: tipoNegocioSelecionado,
@@ -383,11 +479,18 @@ async function atualizarFreelancer(ID){
             enderecoComercialIgualResidencial: isEnderecoComercialIgualResidencial
     }
 
-    await fetch(`${API_URL}/${ID}`, {
-        method: "PUT",
-        headers: { "Content-Type" : "application/json" },
-        body: JSON.stringify(camposAtualizados)
-    })
+    try {
+        await fetch(`${API_URL}/${ID}`, {
+            method: "PUT",
+            headers: { "Content-Type" : "application/json" },
+            body: JSON.stringify(camposAtualizados)
+        })
+
+        alert("Alterações no cadastro salvas com sucesso.");
+    }
+    catch (erro) {
+        console.error(erro);
+    }
 }
 
 // Exibir/Ocultar Senhas
@@ -404,4 +507,55 @@ toggleExibirSenha.addEventListener("click", () => {
 
 toggleExibirConfirmaSenha.addEventListener("click", () => {
     exibirOcultarSenha(inputConfirmaSenha);
+});
+
+// Busca endereço comercial e residencial via API
+async function consultaCEP(campoCEP, campoEndereco, campoNumero, campoBairro, campoCidade, campoEstado, campoComplemento) {
+    try {
+        const resposta = await fetch(`https://viacep.com.br/ws/${campoCEP.value}/json/`);
+        const dados = await resposta.json();
+
+        if(dados.erro) {
+            campoEndereco.value = "";
+            campoCidade.value = "";
+            campoEstado.value = "";
+            campoComplemento.value = "";
+            campoNumero.value = "";
+            campoComplemento.value = "";
+            campoBairro.value = "";
+            campoCEP.value = "";
+            alert("Verifique o CEP informado, endereço incorreto ou não localizado.");
+            return;
+        }
+        else {
+            campoEndereco.value = dados.logradouro;
+            campoBairro.value = dados.bairro;
+            campoCidade.value = dados.localidade;
+            campoEstado.value = dados.estado;
+            campoNumero.value = "";
+            campoComplemento.value = "";
+        }
+    } catch (erro) {
+        console.error(erro);
+    }
+}
+
+inputCepResidencial.addEventListener("focusout", () => {
+    consultaCEP(inputCepResidencial, 
+                inputEnderecoResidencial,
+                inputNumeroResidencial,
+                inputBairroResidencial, 
+                inputCidadeResidencial, 
+                inputEstadoResidencial, 
+                inputComplementoResidencial);
+});
+
+inputCepComercial.addEventListener("change", () => {
+    consultaCEP(inputCepComercial, 
+                inputEnderecoComercial, 
+                inputNumeroComercial, 
+                inputBairroComercial, 
+                inputCidadeComercial, 
+                inputEstadoComercial, 
+                inputComplementoComercial);
 });
