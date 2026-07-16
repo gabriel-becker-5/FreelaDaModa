@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Freelancer | Freela da Moda</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
@@ -60,74 +56,63 @@
 
                         <div class="field">
                             <label for="nascimento">Data de nascimento</label>
-                            <input type="date" id="nascimento" name="nascimento" required>
+                            <input type="date" id="nascimento" name="nascimento" min="1930-01-01" max="2026-07-14" required>
                         </div>
                     </div>
 
                     <div class="grid-2">
                         <div class="field">
                             <label for="email">E-mail</label>
-                            <input type="email" id="email" name="email" placeholder="email@email.com" required>
+                            <input type="email" id="email" name="email" autocomplete="email" placeholder="email@email.com" required>
                         </div>
 
                         <div class="field">
                             <label for="telefone">Telefone / WhatsApp</label>
-                            <input type="tel" id="telefone" name="telefone" placeholder="(47) 99999-9999" required>
+                            <input type="tel" id="telefone" name="telefone" pattern="(\([1-9]{2}\)|[1-9]{2}) ?9?[0-9]{4}-?[0-9]{4}" title="Digite um telefone válido, formato esperado: (47) 99999-9999" placeholder="(47) 99999-9999" required>
                         </div>
                     </div>
 
                     <p class="section-title">Endereço residencial</p>
 
-                    <div class="grid-3">
-                        <div class="field">
+                    <div class="grid-4">
+                        <div class="container-endereco-res" style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <div class="field" style="flex: 1 1 115px; min-width: 100px;">
                             <label for="cep-res">CEP</label>
-                            <input type="text" id="cep-res" name="cep-res" placeholder="00000-000" required>
+                            <input type="text" id="cep-res" name="cep-res" pattern="[0-9]{5}-?[0-9]{3}" title="Digite um CEP válido, formato esperado: 00000-000." maxlength="9" placeholder="00000-000" required>
                         </div>
 
-                        <div class="field" style="grid-column: span 2;">
+                        <div class="field" style="flex: 3 1 260px; min-width: 200px;">
                             <label for="endereco-res">Endereço</label>
-                            <input type="text" id="endereco-res" name="endereco-res" placeholder="Rua, número, bairro"
-                                required>
+                            <input type="text" id="endereco-res" name="endereco-res" placeholder="Rua" disabled required>
                         </div>
+
+                        <div class="field" style="flex: 1 1 115px; min-width: 90px;">
+                            <label for="numero-res">Número</label>
+                            <input type="number" id="numero-res" name="numero-res" placeholder="Número" required>
+                        </div>
+
+                        <div class="field" style="flex: 1 1 180px; min-width: 140px;">
+                            <label for="bairro-res">Bairro</label>
+                            <input type="text" id="bairro-res" name="bairro-res" placeholder="Bairro" disabled required>
+                        </div>
+                        </div>
+                        
+                        <div class="field" style="width: 100%;">
+                            <label for="complemento-res">Complemento</label>
+                            <input type="text" id="complemento-res" name="complemento-res" placeholder="Complemento">
+                        </div>
+
                     </div>
 
                     <div class="grid-2">
                         <div class="field">
                             <label for="cidade-res">Cidade</label>
-                            <input type="text" id="cidade-res" name="cidade-res" placeholder="Cidade" required>
+                            <input type="text" id="cidade-res" name="cidade-res" placeholder="Cidade" disabled required>
                         </div>
 
                         <div class="field">
                             <label for="estado-res">Estado</label>
-                            <select id="estado-res" name="estado-res" required>
-                                <option value="">Selecione</option>
-                                <option>AC - Acre</option>
-                                <option>AL - Alagoas</option>
-                                <option>AP - Amapá</option>
-                                <option>AM - Amazonas</option>
-                                <option>BA - Bahia</option>
-                                <option>CE - Ceará</option>
-                                <option>ES - Espírito Santo</option>
-                                <option>GO - Goiás</option>
-                                <option>MA - Maranhão</option>
-                                <option>MT - Mato Grosso</option>
-                                <option>MS - Mato Grosso do Sul</option>
-                                <option>MG - Minas Gerais</option>
-                                <option>PA - Pará</option>
-                                <option>PB - Paraíba</option>
-                                <option>PR - Paraná</option>
-                                <option>PE - Pernambuco</option>
-                                <option>PI - Piauí</option>
-                                <option>RJ - Rio de Janeiro</option>
-                                <option>RN - Rio Grande do Norte</option>
-                                <option>RS - Rio Grande do Sul</option>
-                                <option>RO - Rondônia</option>
-                                <option>RR - Roraima</option>
-                                <option>SC - Santa Catarina</option>
-                                <option>SP - São Paulo</option>
-                                <option>SE - Sergipe</option>
-                                <option>TO - Tocantins</option>
-                            </select>
+                            <input type="text" id="estado-res" name="estado-res" placeholder="Estado" disabled required>
                         </div>
                     </div>
 
@@ -165,60 +150,47 @@
                     </div>
 
                     <div id="bloco-endereco-comercial" style="margin-top:16px;">
-                        <div class="grid-3">
-                            <div class="field">
+                        <div class="grid-4">
+                            <div class="container-endereco-com" style="display: flex; gap: 15px; flex-wrap: wrap;">
+                            <div class="field" style="flex: 1 1 115px; min-width: 100px;">
                                 <label for="cep-com">CEP</label>
-                                <input type="text" id="cep-com" name="cep-com" placeholder="00000-000" required>
+                                <input type="text" id="cep-com" name="cep-com" pattern="[0-9]{5}-?[0-9]{3}" title="Digite um CEP válido, formato esperado: 00000-000" maxlength="9" placeholder="00000-000" required>
                             </div>
 
-                            <div class="field" style="grid-column: span 2;">
+                            <div class="field" style="flex: 3 1 260px; min-width: 200px;">
                                 <label for="endereco-com">Endereço comercial</label>
                                 <input type="text" id="endereco-com" name="endereco-com"
-                                    placeholder="Rua, número, bairro" required>
+                                    placeholder="Rua, número, bairro" disabled required>
                             </div>
 
+                            <div class="field" style="flex: 1 1 115px; min-width: 90px;">
+                                <label for="numero-com">Número</label>
+                                <input type="number" id="numero-com" name="numero-com" placeholder="Número" required>
+                            </div>
+
+                            <div class="field" style="flex: 1 1 180px; min-width: 140px;">
+                                <label for="bairro-com">Bairro</label>
+                                <input type="text" id="bairro-com" name="bairro-com" placeholder="Bairro" disabled required>
+                            </div>
+                            </div>
+                            
+                            <div class="field" style="width: 100%;">
+                                <label for="complemento-com">Complemento</label>
+                                <input type="text" id="complemento-com" name="complemento-com" placeholder="Complemento">
+                            </div>                            
+                            
                         </div>
                         <div class="grid-2">
                             <div class="field">
                                 <label for="cidade-com">Cidade</label>
-                                <input type="text" id="cidade-com" name="cidade-com" placeholder="Cidade" required>
+                                <input type="text" id="cidade-com" name="cidade-com" placeholder="Cidade" disabled required>
                             </div>
 
                             <div class="field">
                                 <label for="estado-com">Estado</label>
-                                <select id="estado-com" name="estado-com" required>
-                                    <option value="">Selecione</option>
-                                    <option>AC - Acre</option>
-                                    <option>AL - Alagoas</option>
-                                    <option>AP - Amapá</option>
-                                    <option>AM - Amazonas</option>
-                                    <option>BA - Bahia</option>
-                                    <option>CE - Ceará</option>
-                                    <option>ES - Espírito Santo</option>
-                                    <option>GO - Goiás</option>
-                                    <option>MA - Maranhão</option>
-                                    <option>MT - Mato Grosso</option>
-                                    <option>MS - Mato Grosso do Sul</option>
-                                    <option>MG - Minas Gerais</option>
-                                    <option>PA - Pará</option>
-                                    <option>PB - Paraíba</option>
-                                    <option>PR - Paraná</option>
-                                    <option>PE - Pernambuco</option>
-                                    <option>PI - Piauí</option>
-                                    <option>RJ - Rio de Janeiro</option>
-                                    <option>RN - Rio Grande do Norte</option>
-                                    <option>RS - Rio Grande do Sul</option>
-                                    <option>RO - Rondônia</option>
-                                    <option>RR - Roraima</option>
-                                    <option>SC - Santa Catarina</option>
-                                    <option>SP - São Paulo</option>
-                                    <option>SE - Sergipe</option>
-                                    <option>TO - Tocantins</option>
-                                </select>
+                                <input type="text" id="estado-com" name="estado-com" placeholder="Estado" disabled required>
                             </div>
                         </div>
-
-
                     </div>
 
                     <p class="section-title">Tipo de negócio</p>
@@ -371,7 +343,7 @@
 
                         <div class="field" id="campo-produtor">
                             <input type="text" id="nome-produtor" name="nome-produtor"
-                                placeholder="Nome do produtor / confecção">
+                                placeholder="Nome do produtor / confecção" hidden>
                         </div>
                     </div>
 
@@ -413,7 +385,7 @@
             </div>
 
             <div class="actions" id="barra-acoes">
-                <button href="/index.html" class="btn btn-outline" id="btn-voltar" disabled><i class="bi bi-arrow-left"></i>Voltar</button>
+                <a href="/index.html" class="btn btn-outline" id="btn-voltar"><i class="bi bi-arrow-left"></i> Voltar</a>
                 <button type="submit" class="btn btn-primary" id="btn-cadastrar">Cadastrar<i class="bi bi-arrow-right"></i></button>
                 <button type="button" class="btn btn-primary" id="btn-editar">Editar<i class="bi-check-lg"></i></button>
                 <button type="button" class="btn btn-outline" id="btn-excluir">Excluir <i class="bi bi-trash"></i></button>

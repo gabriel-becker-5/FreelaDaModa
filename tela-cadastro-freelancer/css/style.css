@@ -64,6 +64,13 @@ body {
     font-weight: 500;
 }
 
+#btn-voltar,
+#btn-voltar:hover,
+#btn-voltar:focus,
+#btn-voltar:active {
+    text-decoration: none;
+}
+
 .card {
     background: var(--white);
     border-radius: var(--radius-lg);
