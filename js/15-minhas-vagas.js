@@ -1,0 +1,161 @@
+< !DOCTYPE html >
+    <html lang="pt-BR" data-theme="light">
+        <head>
+            <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Freela da Moda - Minhas Vagas</title>
+                    <link rel="stylesheet" href="../css/base.css">
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+                        </head>
+                        <body>
+                            <div class="app">
+                                <!-- Sidebar -->
+                                <aside class="sidebar">
+                                    <div class="brand">
+                                        <div class="brand-logo"></div>
+                                        <div class="brand-text">
+                                            <span>FREELA</span>
+                                            <span class="brand-sub">DA MODA</span>
+                                        </div>
+                                    </div>
+                                    <button class="theme-toggle" id="themeToggle" title="Alternar tema">
+                                        <i class="bi bi-moon-stars"></i>
+                                    </button>
+                                    <nav>
+                                        <a href="04-dashboard-empresa.html"><i class="bi bi-grid-fill"></i> Dashboard</a>
+                                        <a href="12-publicar-vaga.html"><i class="bi bi-plus-circle-fill"></i> Publicar Vaga</a>
+                                        <a href="15-minhas-vagas.html" class="active"><i class="bi bi-list-task"></i> Minhas Vagas</a>
+                                        <a href="16-ordens-servico.html"><i class="bi bi-file-earmark-text"></i> Ordens de Serviço</a>
+                                        <a href="09-perfil-empresa.html"><i class="bi bi-building"></i> Perfil</a>
+                                        <a href="21-assinatura.html"><i class="bi bi-card-heading"></i> Assinatura</a>
+                                        <a href="24-suporte.html"><i class="bi bi-headset"></i> Suporte</a>
+                                    </nav>
+                                </aside>
+
+                                <!-- Conteúdo Principal -->
+                                <main class="main">
+                                    <div class="page-container">
+
+                                        <header class="header">
+                                            <div>
+                                                <h1>Minhas Vagas</h1>
+                                                <p class="text-muted">Gerencie as oportunidades que você publicou na plataforma.</p>
+                                            </div>
+                                            <div class="header-actions">
+                                                <a href="12-publicar-vaga.html" class="btn btn-primary">
+                                                    <i class="bi bi-plus-lg"></i> Nova Vaga
+                                                </a>
+                                            </div>
+                                        </header>
+
+                                        <!-- Filtros -->
+                                        <div class="card mb-md">
+                                            <form class="filters" id="formFiltros">
+                                                <div class="form-group">
+                                                    <label for="filtroStatus" class="field-message">Status</label>
+                                                    <select id="filtroStatus" class="input">
+                                                        <option value="todas">Todas</option>
+                                                        <option value="aberta">Aberta</option>
+                                                        <option value="pausada">Pausada</option>
+                                                        <option value="encerrada">Encerrada</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group input-grow">
+                                                    <label for="buscaTitulo" class="field-message">Buscar por título</label>
+                                                    <input type="text" id="buscaTitulo" class="input" placeholder="Ex: Costureira Pilotista...">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ordenarPor" class="field-message">Ordenar por</label>
+                                                    <select id="ordenarPor" class="input">
+                                                        <option value="recentes">Mais recentes</option>
+                                                        <option value="valor">Maior valor</option>
+                                                        <option value="prazo">Prazo mais próximo</option>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-outline-primary" style="align-self: flex-end; margin-bottom: 2px;">
+                                                    <i class="bi bi-search"></i> Filtrar
+                                                </button>
+                                            </form>
+                                        </div>
+
+                                        <!-- Tabela de Vagas -->
+                                        <div class="card table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Título</th>
+                                                        <th>Valor</th>
+                                                        <th>Status</th>
+                                                        <th>Candidatos</th>
+                                                        <th>Ações</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- Linha 1 -->
+                                                    <tr>
+                                                        <td><strong>VG-001</strong></td>
+                                                        <td>Costureira Pilotista</td>
+                                                        <td>R$ 1.200,00</td>
+                                                        <td><span class="badge badge-success">Aberta</span></td>
+                                                        <td>
+                                                            <a href="17-candidatos-vaga.html" class="text-primary"><strong>8 candidatos</strong></a>
+                                                        </td>
+                                                        <td>
+                                                            <div class="table-actions">
+                                                                <a href="18-vaga-detalhe.html" class="btn btn-outline" title="Ver Detalhes" style="color: var(--color-primary); border: none;"><i class="bi bi-eye"></i></a>
+                                                                <a href="13-editar-vaga.html" class="btn btn-outline" title="Editar" style="color: var(--text-primary); border: none;"><i class="bi bi-pencil"></i></a>
+                                                                <button class="btn btn-outline btnExcluir" title="Excluir" style="border: none;"><i class="bi bi-trash" style="color: var(--danger);"></i></button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- Linha 2 -->
+                                                    <tr>
+                                                        <td><strong>VG-002</strong></td>
+                                                        <td>Modelista Sênior</td>
+                                                        <td>R$ 2.800,00</td>
+                                                        <td><span class="badge badge-warning">Pausada</span></td>
+                                                        <td>
+                                                            <a href="17-candidatos-vaga.html" class="text-primary"><strong>3 candidatos</strong></a>
+                                                        </td>
+                                                        <td>
+                                                            <div class="table-actions">
+                                                                <a href="18-vaga-detalhe.html" class="btn btn-outline" title="Ver Detalhes" style="color: var(--color-primary); border: none;"><i class="bi bi-eye"></i></a>
+                                                                <a href="13-editar-vaga.html" class="btn btn-outline" title="Editar" style="color: var(--text-primary); border: none;"><i class="bi bi-pencil"></i></a>
+                                                                <button class="btn btn-outline btnExcluir" title="Excluir" style="border: none;"><i class="bi bi-trash" style="color: var(--danger);"></i></button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <!-- Paginação -->
+                                            <div class="pagination">
+                                                <span>Mostrando 1-2 de 2 vagas</span>
+                                                <div class="pages">
+                                                    <button class="page-btn active">1</button>
+                                                    <button class="page-btn">2</button>
+                                                    <button class="page-btn">3</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </main>
+                            </div>
+
+                            <!-- Modal de Confirmação de Exclusão -->
+                            <div id="modalExcluir" class="sidebar-overlay" style="display: none; align-items: center; justify-content: center; z-index: 1000;">
+                                <div class="card animate-scale-in" style="max-width: 400px; width: 90%; background: var(--surface);">
+                                    <h3 style="color: var(--danger);"><i class="bi bi-exclamation-triangle-fill"></i> Confirmar exclusão</h3>
+                                    <p class="mt-sm">Tem certeza que deseja excluir esta vaga? Esta ação não poderá ser desfeita e os candidatos perderão o acesso.</p>
+                                    <div class="form-actions mt-lg">
+                                        <button id="btnCancelarExclusao" class="btn btn-outline">Cancelar</button>
+                                        <button id="btnConfirmarExclusao" class="btn btn-danger">Sim, Excluir</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script src="../js/15-minhas-vagas.js"></script>
+                        </body>
+                    </html>

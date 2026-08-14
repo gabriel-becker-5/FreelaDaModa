@@ -1,0 +1,179 @@
+﻿<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Freela da Moda</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="../css/base.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: { DEFAULT: '#820ad1', '600': '#6d08b5', '700': '#4f0087', '100': '#f0e2ff' },
+              surface: { DEFAULT: '#ffffff', alt: '#f3efff' }
+            },
+            fontFamily: { sans: ['Plus Jakarta Sans', 'Arial', 'sans-serif'] },
+            borderRadius: { DEFAULT: '12px' }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <main class="main">
+      <div class="page-container">
+        <header class="header">
+          <a href="01-homepage.html" class="top-brand"
+            ><img
+              src="../assets/logo.svg"
+              alt="Logo Freela"
+              class="brand-logo"
+            /><span class="brand-text">FREELA<span class="brand-sub">DA MODA</span></span></a
+          >
+          <nav class="header-actions" aria-label="Acesso principal">
+            <button
+              class="theme-toggle"
+              type="button"
+              aria-label="Alternar tema claro e escuro"
+            ><i class="bi bi-moon-stars" aria-hidden="true"></i></button>
+            <a href="02-login.html">Entrar</a>
+            <a href="05-cadastro-freelancer.html" class="btn btn-outline-primary"
+              >Sou Freelancer</a
+            >
+            <a href="06-cadastro-empresa.html" class="btn btn-primary"
+              >Sou Empresa</a
+            >
+          </nav>
+        </header>
+
+        <section class="hero">
+          <div class="hero-content">
+            <h2>A forma mais rápida de contratar talentos da moda</h2>
+            <p>
+              Pare de perder tempo em grupos e indicações. Encontre
+              profissionais qualificados próximos de você e gerencie tudo em um
+              só lugar.
+            </p>
+            <div class="cluster">
+              <a href="06-cadastro-empresa.html" class="btn btn-primary"
+                >Publicar vaga</a
+              >
+              <a href="05-cadastro-freelancer.html" class="btn btn-ghost"
+                >Encontrar trabalhos</a
+              >
+            </div>
+          </div>
+          <div
+            class="hero-panel"
+            aria-label="Conexão entre empresas e freelancers"
+          >
+            <img
+              src="../assets/homepage.jpg"
+              alt=""
+              role="presentation"
+              style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 16px;"
+            />
+          </div>
+        </section>
+
+        <section
+          class="grid grid-4 mt-xl"
+          aria-label="Indicadores da plataforma"
+        >
+          <div class="stat-item">
+            <strong>+1200</strong>
+            <p>Freelancers</p>
+          </div>
+          <div class="stat-item">
+            <strong>+300</strong>
+            <p>Empresas</p>
+          </div>
+          <div class="stat-item">
+            <strong>+900</strong>
+            <p>Vagas</p>
+          </div>
+          <div class="stat-item">
+            <strong>+700</strong>
+            <p>Serviços</p>
+          </div>
+        </section>
+
+        <section class="grid grid-3 mt-xl" aria-label="Benefícios">
+          <article class="card feature-card">
+            <div class="feature-icon"><i class="bi bi-search"></i></div>
+            <h3>Busca inteligente</h3>
+            <p>
+              Localização e especialidade com precisão para contratar mais
+              rápido.
+            </p>
+          </article>
+          <article class="card feature-card">
+            <div class="feature-icon"><i class="bi bi-clipboard-check"></i></div>
+            <h3>Gestão completa</h3>
+            <p>
+              Controle visual do ciclo de vagas, candidaturas e ordens de
+              serviço.
+            </p>
+          </article>
+          <article class="card feature-card">
+            <div class="feature-icon"><i class="bi bi-chat-dots"></i></div>
+            <h3>Conexão direta</h3>
+            <p>
+              Comunicação rápida entre empresa e profissional durante todo o
+              processo.
+            </p>
+          </article>
+        </section>
+
+        <section class="grid grid-3 mt-xl" aria-label="Depoimentos">
+          <div class="card feature-card">
+            <p style="font-style: italic; color: var(--text-secondary);">
+              "Encontrei costureiras qualificadas em menos de 24h. A plataforma
+              transformou nossa produção."
+            </p>
+            <strong style="margin-top: 8px; display: block;"
+              >&mdash; Confecção Silva</strong
+            >
+          </div>
+          <div class="card feature-card">
+            <p style="font-style: italic; color: var(--text-secondary);">
+              "Consegui clientes fixos que eu jamais alcançaria pelos grupos de
+              WhatsApp."
+            </p>
+            <strong style="margin-top: 8px; display: block;"
+              >&mdash; Maria, Freelancer</strong
+            >
+          </div>
+          <div class="card feature-card">
+            <p style="font-style: italic; color: var(--text-secondary);">
+              "Organização impecável das ordens de serviço. Consigo acompanhar
+              cada etapa."
+            </p>
+            <strong style="margin-top: 8px; display: block;"
+              >&mdash; Confecção Costa</strong
+            >
+          </div>
+        </section>
+
+        <section class="cta-panel">
+          <h2>Comece a contratar ou trabalhar hoje</h2>
+          <p>Sem burocracia. Sem intermediários. Só resultado.</p>
+          <a href="05-cadastro-freelancer.html" class="btn btn-primary"
+            >Criar conta gratuita</a
+          >
+        </section>
+      </div>
+    </main>
+    <script src="../js/01-homepage.js"></script>
+  </body>
+</html>
