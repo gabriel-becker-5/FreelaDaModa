@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel da Empresa | Freela da Moda</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        /* Estilos específicos do Painel da Empresa */
+        .dash-container {
+            padding: 30px 20px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-dark-gradient);
+            padding: 32px 40px;
+            border-radius: var(--radius-lg);
+            color: var(--text-light);
+            box-shadow: var(--shadow-card);
+            margin-bottom: 30px;
+        }
+
+        .dash-user-info h1 {
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+        }
+
+        .dash-user-info p {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
+        }
+
+        .user-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.15);
+            color: #e2c2ff;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        /* Grade de Métricas */
+        .dash-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric-card {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .metric-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--primary-light);
+            color: var(--primary-bright);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .metric-info strong {
+            display: block;
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            font-weight: 800;
+        }
+
+        .metric-info span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Layout em 2 Colunas */
+        .dash-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+        }
+
+        .section-box {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 28px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-color);
+            margin-bottom: 24px;
+        }
+
+        .box-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .box-title h2 {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+        }
+
+        /* Itens de Vagas e Candidatos */
+        .company-job-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .company-job-item:last-child {
+            border-bottom: none;
+        }
+
+        .job-details h3 {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .job-details span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .job-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* Perfil Lateral da Empresa */
+        .company-profile-view {
+            text-align: center;
+        }
+
+        .company-avatar-big {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary-bright);
+            font-size: 1.8rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+        }
+
+        .company-profile-view h3 {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .company-profile-view p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-bottom: 16px;
+        }
+
+        .quick-info-list {
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .quick-info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            font-size: 0.88rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .quick-info-row span {
+            color: var(--text-muted);
+        }
+
+        .quick-info-row strong {
+            color: var(--text-dark);
+        }
+
+        /* MODAL DE NOVA VAGA */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 560px;
+            padding: 32px;
+            box-shadow: var(--shadow-card);
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-header h2 {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+        }
+
+        .btn-close-modal {
+            background: transparent;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 900px) {
+            .dash-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .dash-layout {
+                grid-template-columns: 1fr;
+            }
+            .dash-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .dash-metrics {
+                grid-template-columns: 1fr;
+            }
+            .company-job-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="header container">
+        <a href="home.html" class="logo-area">
+            <img src="img/logo.svg" alt="Logo Freela da Moda" class="logo-img" />
+            <div class="logo-text">
+                <span>FREELA</span>
+                <span>DA MODA</span>
+            </div>
+        </a>
+
+        <nav class="nav-menu">
+            <a href="home.html">Início</a>
+            <a href="vagas.html">Mural de Vagas</a>
+            <a href="dashboard-empresa.html" style="color: var(--primary-bright); font-weight: 700;">Painel da Confecção</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="btn btn-outline-purple" id="btn-logout">
+                <i class="bi bi-box-arrow-right"></i> Sair
+            </button>
+        </div>
+    </header>
+
+    <main class="dash-container">
+
+        <!-- CABEÇALHO DO PAINEL DA EMPRESA -->
+        <section class="dash-header">
+            <div class="dash-user-info">
+                <h1 id="welcome-empresa">Painel da Confecção</h1>
+                <p>Gerencie suas ordens de serviço, publique vagas e contrate profissionais.</p>
+                <span class="user-tag"><i class="bi bi-building-check"></i> Empresa Verificada</span>
+            </div>
+            <div>
+                <button class="btn btn-purple-bright" id="btn-abrir-modal-vaga">
+                    <i class="bi bi-plus-lg"></i> Publicar Nova Vaga
+                </button>
+            </div>
+        </section>
+
+        <!-- 4 CARDS DE MÉTRICAS -->
+        <section class="dash-metrics">
+            <div class="metric-card">
+                <div class="metric-icon"><i class="bi bi-briefcase"></i></div>
+                <div class="metric-info">
+                    <strong id="metric-vagas-abertas">0</strong>
+                    <span>Vagas ativas</span>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon"><i class="bi bi-people"></i></div>
+                <div class="metric-info">
+                    <strong>12</strong>
+                    <span>Candidatos recebidos</span>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon"><i class="bi bi-gear-wide-connected"></i></div>
+                <div class="metric-info">
+                    <strong>3</strong>
+                    <span>Lotes em produção</span>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon"><i class="bi bi-cash-stack"></i></div>
+                <div class="metric-info">
+                    <strong>R$ 8.900</strong>
+                    <span>Investimento em freelas</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTEÚDO PRINCIPAL EM 2 COLUNAS -->
+        <div class="dash-layout">
+            
+            <!-- Coluna Principal (Minhas Vagas) -->
+            <div class="main-column">
+                <div class="section-box">
+                    <div class="box-title">
+                        <h2><i class="bi bi-list-task"></i> Vagas Publicadas pela sua Empresa</h2>
+                        <span id="contador-vagas-texto" style="font-size: 0.85rem; color: var(--primary-bright); font-weight: 600;">Carregando...</span>
+                    </div>
+
+                    <div class="company-jobs-list" id="lista-minhas-vagas">
+                        <!-- Renderizado via dashboard-empresa.js -->
+                    </div>
+                </div>
+
+                <!-- Candidaturas Recentes -->
+                <div class="section-box">
+                    <div class="box-title">
+                        <h2><i class="bi bi-person-lines-fill"></i> Últimas Candidaturas Recebidas</h2>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">Tempo real</span>
+                    </div>
+
+                    <div class="candidates-list">
+                        <div class="company-job-item">
+                            <div class="job-details">
+                                <h3>Karina Vicente <span style="font-size: 0.8rem; color: #137333; background: #e6f4ea; padding: 2px 8px; border-radius: 10px;">Costureira Especialista</span></h3>
+                                <span>Candidatou-se para: <strong>Costureira Especialista em Alfaiataria</strong></span>
+                            </div>
+                            <div class="job-actions">
+                                <a href="https://wa.me/5547999999999" target="_blank" class="btn btn-outline-purple" style="padding: 6px 12px; font-size: 0.82rem;">
+                                    <i class="bi bi-whatsapp"></i> Conversar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coluna Lateral (Dados Cadastrais da Empresa) -->
+            <div class="sidebar-column">
+                <div class="section-box company-profile-view">
+                    <div class="company-avatar-big" id="empresa-iniciais">SF</div>
+                    <h3 id="empresa-nome-fantasia">Silva Fashion</h3>
+                    <p id="empresa-razao-social">Confecção Silva & Cia</p>
+
+                    <div class="quick-info-list">
+                        <div class="quick-info-row">
+                            <span>CNPJ:</span>
+                            <strong id="empresa-cnpj">12.345.678/0001-90</strong>
+                        </div>
+                        <div class="quick-info-row">
+                            <span>E-mail:</span>
+                            <strong id="empresa-email">contato@silvafashion.com.br</strong>
+                        </div>
+                        <div class="quick-info-row">
+                            <span>Ramo:</span>
+                            <strong id="empresa-ramo">Moda Feminina</strong>
+                        </div>
+                        <div class="quick-info-row">
+                            <span>Localização:</span>
+                            <strong id="empresa-local">São Paulo / SP</strong>
+                        </div>
+                    </div>
+
+                    <a href="cadastro-empresa.html" class="btn btn-outline-purple w-full">
+                        <i class="bi bi-building-gear"></i> Editar Dados da Empresa
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- MODAL: PUBLICAR NOVA VAGA -->
+    <div class="modal-overlay" id="modal-nova-vaga">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Publicar Nova Vaga</h2>
+                <button class="btn-close-modal" id="btn-fechar-modal"><i class="bi bi-x-lg"></i></button>
+            </div>
+
+            <form id="form-nova-vaga">
+                <div class="field" style="margin-bottom: 14px;">
+                    <label for="vaga-titulo">Título da Vaga</label>
+                    <input type="text" id="vaga-titulo" placeholder="Ex: Costureira para Lote de Vestidos" required />
+                </div>
+
+                <div class="grid-2" style="margin-bottom: 14px;">
+                    <div class="field">
+                        <label for="vaga-especialidade">Especialidade</label>
+                        <select id="vaga-especialidade" required>
+                            <option value="">Selecione</option>
+                            <option value="Costura reta">Costura reta</option>
+                            <option value="Overloque">Overloque</option>
+                            <option value="Modelagem">Modelagem</option>
+                            <option value="Peça piloto">Peça piloto</option>
+                            <option value="Acabamento">Acabamento</option>
+                            <option value="Bordado">Bordado</option>
+                            <option value="Estamparia">Estamparia</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="vaga-valor">Orçamento / Valor</label>
+                        <input type="text" id="vaga-valor" placeholder="Ex: R$ 2.500,00" required />
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-bottom: 14px;">
+                    <div class="field">
+                        <label for="vaga-prazo">Prazo Estimado</label>
+                        <input type="text" id="vaga-prazo" placeholder="Ex: 10 dias" required />
+                    </div>
+
+                    <div class="field">
+                        <label for="vaga-local">Localização / Formato</label>
+                        <input type="text" id="vaga-local" placeholder="Ex: São Paulo, SP ou Remoto" required />
+                    </div>
+                </div>
+
+                <div class="field" style="margin-bottom: 20px;">
+                    <label for="vaga-desc">Descrição Detalhada do Serviço</label>
+                    <textarea id="vaga-desc" rows="3" style="width:100%; padding:10px 14px; border:1px solid var(--border-color); border-radius:var(--radius-sm); font-family:inherit; outline:none;" placeholder="Detalhes sobre a quantidade de peças, tipo de tecido e acabamentos desejados..." required></textarea>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 12px;">
+                    <button type="button" class="btn btn-outline" id="btn-cancelar-modal">Cancelar</button>
+                    <button type="submit" class="btn btn-purple-bright" id="btn-salvar-vaga">
+                        Publicar Vaga <i class="bi bi-arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container" style="text-align: center;">
+            <p>Freela da Moda © 2026 — Gestão Estratégica de Confecção e Freelas</p>
+        </div>
+    </footer>
+
+    <script src="dashboard-empresa.js"></script>
+</body>
+</html>
