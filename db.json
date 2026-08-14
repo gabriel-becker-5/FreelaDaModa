@@ -1,0 +1,92 @@
+{
+  "freelancers": [
+    {
+      "id": "1",
+      "nome": "Karina Vicente",
+      "email": "karinavicente06@gmail.com",
+      "telefone": "(47) 99999-9999",
+      "nascimento": "1995-04-10",
+      "senha": "12345678",
+      "tipoNegocio": "MEI",
+      "experiencia": "5 a 10 anos",
+      "oficina": "Só eu",
+      "especialidades": [
+        "Costura reta",
+        "Overloque",
+        "Modelagem"
+      ],
+      "maquinas": [
+        "Reta",
+        "Overloque"
+      ],
+      "fechamento": "Plataformas online",
+      "disponibilidade": "Período integral",
+      "produtorFixo": "nao",
+      "nomeProdutor": "",
+      "veiculo": "sim",
+      "faturamento": "R$ 3.000 a R$ 6.000",
+      "enderecoResidencial": {
+        "cep": "89010-000",
+        "endereco": "Rua das Flores",
+        "numero": "123",
+        "bairro": "Centro",
+        "complemento": "Apto 101",
+        "cidade": "Blumenau",
+        "estado": "SC"
+      }
+    }
+  ],
+  "empresas": [
+    {
+      "id": "1",
+      "razaoSocial": "Confecção Silva & Cia",
+      "nomeFantasia": "Silva Fashion",
+      "cnpj": "12.345.678/0001-90",
+      "email": "contato@silvafashion.com.br",
+      "telefone": "(11) 98888-7777",
+      "senha": "12345678",
+      "ramo": "Moda Feminina",
+      "porte": "Média empresa",
+      "cidade": "São Paulo",
+      "estado": "SP"
+    }
+  ],
+  "vagas": [
+    {
+      "id": "1",
+      "empresaId": "1",
+      "empresaNome": "Silva Fashion",
+      "titulo": "Costureira Especialista em Alfaiataria",
+      "descricao": "Produção de lote de 200 blazers femininos em linho com forro.",
+      "especialidade": "Costura reta",
+      "valor": "R$ 3.500,00",
+      "prazo": "15 dias",
+      "local": "São Paulo, SP (Envio por correio)",
+      "status": "Aberta"
+    },
+    {
+      "id": "2",
+      "empresaId": "1",
+      "empresaNome": "Silva Fashion",
+      "titulo": "Modelista para Coleção de Verão",
+      "descricao": "Desenvolvimento de moldes digitais e graduação P/M/G para vestidos leves.",
+      "especialidade": "Modelagem",
+      "valor": "R$ 1.800,00",
+      "prazo": "7 dias",
+      "local": "Remoto",
+      "status": "Aberta"
+    },
+    {
+      "empresaId": "1",
+      "empresaNome": "Confecção Silva & Cia",
+      "titulo": "Modelista em audaces",
+      "especialidade": "Modelagem",
+      "valor": "2000",
+      "prazo": "7",
+      "local": "Santa Catarina",
+      "descricao": "10 modelagens e graduação de camisas femininas",
+      "status": "Aberta",
+      "id": "ZlDvpb1"
+    }
+  ]
+}
