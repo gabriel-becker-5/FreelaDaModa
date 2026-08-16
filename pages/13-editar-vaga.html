@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freela da Moda - Editar Vaga</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar de Navegação -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-logo"></div>
+                <div class="brand-text">
+                    <span>FREELA</span>
+                    <span class="brand-sub">DA MODA</span>
+                </div>
+            </div>
+            <button class="theme-toggle" id="themeToggle" title="Alternar tema">
+                <i class="bi bi-moon-stars"></i>
+            </button>
+            <nav>
+                <a href="04-dashboard-empresa.html"><i class="bi bi-grid-fill"></i> Dashboard</a>
+                <a href="12-publicar-vaga.html"><i class="bi bi-plus-circle-fill"></i> Publicar Vaga</a>
+                <a href="15-minhas-vagas.html" class="active"><i class="bi bi-list-task"></i> Minhas Vagas</a>
+                <a href="16-ordens-servico.html"><i class="bi bi-file-earmark-text"></i> Ordens de Serviço</a>
+                <a href="09-perfil-empresa.html"><i class="bi bi-building"></i> Perfil</a>
+                <a href="21-assinatura.html"><i class="bi bi-card-heading"></i> Assinatura</a>
+                <a href="24-suporte.html"><i class="bi bi-headset"></i> Suporte</a>
+            </nav>
+        </aside>
+
+        <!-- Conteúdo Principal -->
+        <main class="main">
+            <div class="page-container-md">
+
+                <!-- Cabeçalho -->
+                <header class="header">
+                    <div>
+                        <h1>Editar Vaga</h1>
+                        <p class="text-muted">Atualize as informações ou mude o status desta publicação.</p>
+                    </div>
+                    <div class="header-actions">
+                        <a href="15-minhas-vagas.html" class="btn btn-outline">
+                            <i class="bi bi-arrow-left"></i> Voltar
+                        </a>
+                    </div>
+                </header>
+
+                <!-- Mensagem de Feedback -->
+                <div id="feedbackAlert" class="alert alert-success animate-fade-in" style="display: none;" role="alert">
+                    <i class="bi bi-check-circle-fill"></i> Alterações salvas com sucesso! Redirecionando...
+                </div>
+
+                <!-- Formulário de Edição -->
+                <form id="formEditarVaga" class="card stack" novalidate>
+                    <div class="cluster-between">
+                        <span class="section-title" style="margin: 0;">Informações da Vaga</span>
+                        <span class="badge badge-primary-bg" style="font-size: 14px;">ID: VG-001</span>
+                    </div>
+
+                    <!-- Status da Vaga -->
+                    <div class="form-group mb-md" style="background: var(--surface-alt); padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
+                        <label for="statusVaga"><strong>Status da Publicação</strong></label>
+                        <select id="statusVaga" class="input" style="max-width: 250px;">
+                            <option value="aberta" selected>Aberta (Recebendo candidatos)</option>
+                            <option value="pausada">Pausada (Oculta temporariamente)</option>
+                            <option value="encerrada">Encerrada (Vaga preenchida ou cancelada)</option>
+                        </select>
+                    </div>
+
+                    <!-- Título -->
+                    <div class="form-group">
+                        <label for="titulo" class="checkbox-label"><strong>Título do Serviço / Vaga *</strong></label>
+                        <input type="text" id="titulo" class="input" value="Costureira Pilotista" required>
+                        <span class="field-message" id="tituloError"></span>
+                    </div>
+
+                    <!-- Categoria e Modalidade -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="categoria"><strong>Categoria *</strong></label>
+                            <select id="categoria" class="input" required>
+                                <option value="Costura" selected>Costura</option>
+                                <option value="Modelagem">Modelagem</option>
+                                <option value="Acabamento">Acabamento</option>
+                                <option value="Bordado">Bordado</option>
+                                <option value="Estamparia">Estamparia</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="modalidade"><strong>Modalidade *</strong></label>
+                            <select id="modalidade" class="input" required>
+                                <option value="Presencial" selected>Presencial</option>
+                                <option value="Híbrida">Híbrida</option>
+                                <option value="Remota">Remota</option>
+                                <option value="Sob demanda">Sob demanda</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Cidade e Estado -->
+                    <div class="form-row">
+                        <div class="form-group autocomplete-wrapper">
+                            <label for="cidade"><strong>Cidade *</strong></label>
+                            <input type="text" id="cidade" class="input" value="São Paulo - SP" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="estado"><strong>Estado (UF) *</strong></label>
+                            <select id="estado" class="input" required>
+                                <option value="SC">Santa Catarina (SC)</option>
+                                <option value="SP" selected>São Paulo (SP)</option>
+                                <option value="RJ">Rio de Janeiro (RJ)</option>
+                                <option value="PR">Paraná (PR)</option>
+                                <option value="MG">Minas Gerais (MG)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Valor e Prazo -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="valor"><strong>Valor Oferecido (R$) *</strong></label>
+                            <div class="input-number-group">
+                                <button type="button" class="input-number-btn" id="btnDecrementar">-</button>
+                                <input type="text" id="valor" class="input" value="R$ 1.200,00" required>
+                                <button type="button" class="input-number-btn" id="btnIncrementar">+</button>
+                            </div>
+                        </div>
+                        <div class="form-group date-input-wrapper">
+                            <label for="prazo"><strong>Prazo Máximo *</strong></label>
+                            <!-- Simulando uma data pré-preenchida -->
+                            <input type="date" id="prazo" class="input" value="2026-12-10" required>
+                            <i class="bi bi-calendar-event"></i>
+                        </div>
+                    </div>
+
+                    <!-- Descrição -->
+                    <div class="form-group">
+                        <label for="descricao"><strong>Descrição Detalhada *</strong></label>
+                        <textarea id="descricao" class="input" required>Produção de peças piloto e ajustes finos de acabamento para coleção de verão.</textarea>
+                        <span class="field-message" id="descricaoError"></span>
+                    </div>
+
+                    <!-- Requisitos -->
+                    <div class="form-group">
+                        <label for="requisitos"><strong>Requisitos Mínimos</strong></label>
+                        <input type="text" id="requisitos" class="input" value="Experiência com acabamento e modelagem básica.">
+                    </div>
+
+                    <!-- Habilidades (Pre-selecionadas) -->
+                    <div class="form-group">
+                        <label><strong>Habilidades e Maquinários Necessários</strong></label>
+                        <div class="multi-select" id="habilidadesGroup">
+                            <span class="badge badge-selectable selected" data-value="Reta">Costura Reta</span>
+                            <span class="badge badge-selectable selected" data-value="Overloque">Overloque</span>
+                            <span class="badge badge-selectable" data-value="Galoneira">Galoneira</span>
+                            <span class="badge badge-selectable selected" data-value="Modelagem">Modelagem</span>
+                            <span class="badge badge-selectable" data-value="Acabamento">Acabamento</span>
+                            <span class="badge badge-selectable" data-value="Corte">Máquina de Corte</span>
+                        </div>
+                    </div>
+
+                    <!-- Referências Visuais (Já enviadas) -->
+                    <div class="form-group">
+                        <label><strong>Referências Visuais / Briefing</strong></label>
+                        <!-- Arquivo já anexado -->
+                        <div class="upload-file-preview mb-sm" style="display: flex; justify-content: space-between;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <i class="bi bi-file-earmark-image"></i>
+                                <span>briefing-costura.jpg (1.2 MB)</span>
+                            </div>
+                            <button type="button" class="btn btn-ghost" style="padding: 4px 8px; color: var(--danger);"><i class="bi bi-trash"></i></button>
+                        </div>
+
+                        <div class="upload-dropzone" id="dropzone">
+                            <i class="bi bi-cloud-arrow-up-fill"></i>
+                            <p>Arraste novos arquivos aqui, ou clique para adicionar</p>
+                            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                        </div>
+                        <div id="filePreview" class="upload-file-preview" style="display: none; margin-top: 8px;">
+                            <i class="bi bi-file-earmark-image"></i>
+                            <span id="fileName"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <a href="15-minhas-vagas.html" class="btn btn-outline">Cancelar</a>
+                        <button type="submit" class="btn btn-primary" id="btnSubmit">
+                            <i class="bi bi-save-fill"></i> Salvar Alterações
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/13-editar-vaga.js"></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+﻿<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vagas</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="../css/base.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: { DEFAULT: '#820ad1', '600': '#6d08b5', '700': '#4f0087', '100': '#f0e2ff' },
+              surface: { DEFAULT: '#ffffff', alt: '#f3efff' }
+            },
+            fontFamily: { sans: ['Plus Jakarta Sans', 'Arial', 'sans-serif'] },
+            borderRadius: { DEFAULT: '12px' }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="app">
+      <button class="sidebar-toggle-btn" type="button" aria-label="Abrir menu" aria-expanded="false">
+  <span class="hamburger-line"></span>
+</button>
+<div class="sidebar-overlay"></div>
+<aside class="sidebar" role="navigation" aria-label="Menu principal">
+        <div class="brand">
+          <img
+            src="../assets/logo.svg"
+            alt="Logo Freela"
+            class="brand-logo"
+          /><span class="brand-text">FREELA<span class="brand-sub">DA MODA</span></span>
+        </div>
+        <button
+          class="theme-toggle"
+          type="button"
+          aria-label="Alternar tema claro e escuro"
+        ><i class="bi bi-moon-stars" aria-hidden="true"></i></button>
+        <a href="03-dashboard.html">Dashboard</a
+        ><a class="active" href="07-vagas.html" aria-current="page">Vagas</a
+        ><a href="20-minhas-candidaturas.html">Candidaturas/OS</a
+        ><a href="08-perfil-freelancer.html">Perfil</a
+        ><a href="11-chat.html">Chat</a
+        ><a href="10-impulsionamento.html">Impulsionamento</a
+        ><a href="24-suporte.html">Suporte</a>
+      </aside>
+      <main class="main" role="main" aria-label="Conteúdo principal">
+        <div class="header"><h2>Mural de Vagas</h2></div>
+        <section class="card mb-md">
+          <div class="filters">
+            <div class="autocomplete-wrapper" style="flex: 1 1 240px;">
+              <input
+                id="busca-vaga"
+                class="input"
+                style="width: 100%;"
+                placeholder="Buscar vaga por título, empresa ou cidade"
+              />
+              <div class="autocomplete-dropdown">
+                <div class="autocomplete-item">Costureira Pilotista — Confecção X</div>
+                <div class="autocomplete-item">Modelista Sênior — Confecção Y</div>
+                <div class="autocomplete-item">Bordadeira — Ateliê Z</div>
+              </div>
+            </div><select class="input" aria-label="Categoria">
+              <option>Categoria</option>
+              <option>Costura</option>
+              <option>Modelagem</option>
+              <option>Acabamento</option></select
+            ><select class="input" aria-label="Modalidade">
+              <option>Modalidade</option>
+              <option>Presencial</option>
+              <option>Híbrida</option>
+              <option>Remota</option></select
+            ><select class="input" aria-label="Status">
+              <option>Status</option>
+              <option>Aberta</option>
+              <option>Encerrada</option></select
+            ><button class="btn btn-primary">Filtrar</button>
+          </div>
+        </section>
+        <div class="loading-skeleton mb-md" aria-busy="true" aria-label="Carregando vagas">
+          <div class="skeleton skeleton-card"></div>
+          <div class="skeleton skeleton-card"></div>
+          <div class="skeleton skeleton-card"></div>
+        </div>
+        <div class="empty-state mb-md" aria-live="polite">
+          Nenhuma vaga encontrada para os filtros selecionados.
+        </div>
+        <div class="alert alert-error mb-md" role="alert" aria-live="polite">
+          Erro ao carregar vagas.
+        </div>
+        <section class="grid">
+          <article class="card">
+            <div class="cluster-between">
+              <h3>Costureira Pilotista</h3>
+              <span class="badge">Aberta</span>
+            </div>
+            <p><strong>Empresa:</strong> Confecção X</p>
+            <p>
+              <strong>Categoria:</strong> Costura |
+              <strong>Modalidade:</strong> Presencial
+            </p>
+            <p><strong>Cidade/Estado:</strong> São Paulo - SP</p>
+            <p>
+              <strong>Publicação:</strong> 01/07/2026 09:30 |
+              <strong>Prazo:</strong> 10/12/2026
+            </p>
+            <p><strong>Valor:</strong> R$ 1.200</p>
+            <p>Produção de peças piloto e ajustes de acabamento.</p>
+            <div class="cluster-between mt-sm">
+              <div class="multi-select">
+                <span class="badge">Reta</span
+                ><span class="badge">Overloque</span>
+              </div>
+              <a href="18-vaga-detalhe.html" class="btn btn-primary"
+                >Ver detalhes</a
+              >
+            </div>
+          </article>
+          <article class="card">
+            <div class="cluster-between">
+              <h3>Modelista Sênior</h3>
+              <span class="badge">Aberta</span>
+            </div>
+            <p><strong>Empresa:</strong> Confecção Y</p>
+            <p>
+              <strong>Categoria:</strong> Modelagem |
+              <strong>Modalidade:</strong> Remota
+            </p>
+            <p><strong>Cidade/Estado:</strong> Rio de Janeiro - RJ</p>
+            <p>
+              <strong>Publicação:</strong> 05/07/2026 14:00 |
+              <strong>Prazo:</strong> 30/11/2026
+            </p>
+            <p><strong>Valor:</strong> R$ 2.800</p>
+            <p>Desenvolvimento de modelagem para coleção inverno.</p>
+            <div class="cluster-between mt-sm">
+              <div class="multi-select">
+                <span class="badge">Modelagem</span
+                ><span class="badge">Peça piloto</span>
+              </div>
+              <a href="18-vaga-detalhe.html" class="btn btn-primary"
+                >Ver detalhes</a
+              >
+            </div>
+          </article>
+          <article class="card">
+            <div class="cluster-between">
+              <h3>Bordadeira Especializada</h3>
+              <span class="badge badge-warning">Pausada</span>
+            </div>
+            <p><strong>Empresa:</strong> Ateliê Z</p>
+            <p>
+              <strong>Categoria:</strong> Bordado |
+              <strong>Modalidade:</strong> Presencial
+            </p>
+            <p><strong>Cidade/Estado:</strong> Belo Horizonte - MG</p>
+            <p>
+              <strong>Publicação:</strong> 10/07/2026 08:15 |
+              <strong>Prazo:</strong> 15/01/2027
+            </p>
+            <p><strong>Valor:</strong> R$ 3.500</p>
+            <p>Bordado manual em peças de alta costura.</p>
+            <div class="cluster-between mt-sm">
+              <div class="multi-select">
+                <span class="badge">Bordado</span
+                ><span class="badge">Acabamento</span>
+              </div>
+              <a href="18-vaga-detalhe.html" class="btn btn-primary"
+                >Ver detalhes</a
+              >
+            </div>
+          </article>
+          <article class="card">
+            <div class="cluster-between">
+              <h3>Acabamento e Revisão</h3>
+              <span class="badge">Aberta</span>
+            </div>
+            <p><strong>Empresa:</strong> Confecção W</p>
+            <p>
+              <strong>Categoria:</strong> Acabamento |
+              <strong>Modalidade:</strong> Híbrida
+            </p>
+            <p><strong>Cidade/Estado:</strong> Curitiba - PR</p>
+            <p>
+              <strong>Publicação:</strong> 12/07/2026 11:00 |
+              <strong>Prazo:</strong> 20/02/2027
+            </p>
+            <p><strong>Valor:</strong> R$ 900</p>
+            <p>Revisão de acabamento em lote de 200 peças.</p>
+            <div class="cluster-between mt-sm">
+              <div class="multi-select">
+                <span class="badge">Acabamento</span
+                ><span class="badge">Overloque</span>
+              </div>
+              <a href="18-vaga-detalhe.html" class="btn btn-primary"
+                >Ver detalhes</a
+              >
+            </div>
+          </article>
+          <article class="card">
+            <div class="cluster-between">
+              <h3>Estamparia Digital</h3>
+              <span class="badge">Aberta</span>
+            </div>
+            <p><strong>Empresa:</strong> Marca V</p>
+            <p>
+              <strong>Categoria:</strong> Estamparia |
+              <strong>Modalidade:</strong> Presencial
+            </p>
+            <p><strong>Cidade/Estado:</strong> Fortaleza - CE</p>
+            <p>
+              <strong>Publicação:</strong> 15/07/2026 16:45 |
+              <strong>Prazo:</strong> 05/12/2026
+            </p>
+            <p><strong>Valor:</strong> R$ 1.800</p>
+            <p>Estamparia digital em tecido plano para coleção verão.</p>
+            <div class="cluster-between mt-sm">
+              <div class="multi-select">
+                <span class="badge">Estamparia</span
+                ><span class="badge">Galoneira</span>
+              </div>
+              <a href="18-vaga-detalhe.html" class="btn btn-primary"
+                >Ver detalhes</a
+              >
+            </div>
+          </article>
+          <article class="card">
+            <div class="cluster-between">
+              <h3>Costureira Overloquista</h3>
+              <span class="badge">Aberta</span>
+            </div>
+            <p><strong>Empresa:</strong> Confecção U</p>
+            <p>
+              <strong>Categoria:</strong> Costura |
+              <strong>Modalidade:</strong> Presencial
+            </p>
+            <p><strong>Cidade/Estado:</strong> Porto Alegre - RS</p>
+            <p>
+              <strong>Publicação:</strong> 18/07/2026 07:30 |
+              <strong>Prazo:</strong> 30/01/2027
+            </p>
+            <p><strong>Valor:</strong> R$ 2.100</p>
+            <p>Produção contínua em overloque para malharia.</p>
+            <div class="cluster-between mt-sm">
+              <div class="multi-select">
+                <span class="badge">Overloque</span
+                ><span class="badge">Interlock</span>
+              </div>
+              <a href="18-vaga-detalhe.html" class="btn btn-primary"
+                >Ver detalhes</a
+              >
+            </div>
+          </article>
+        </section>
+        <div class="pagination">
+          <span>Mostrando 1-10 de 32</span>
+          <div class="pages">
+            <span class="page-btn active">1</span><span class="page-btn">2</span
+            ><span class="page-btn">3</span>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="../js/07-vagas.js"></script>
+  </body>
+</html>
