@@ -57,42 +57,48 @@
         ><a href="24-suporte.html">Suporte</a>
       </aside>
       <main class="main" role="main" aria-label="Conteúdo principal">
+        
+        
+        <!-- Estado de carregamento -->
+        <div id="perfil-loading" class="text-center">
+          <p>Carregando Candidaturas...</p>
+        </div>
+
+        <!-- Estado de erro -->
+        <div id="perfil-erro" class="alert" role="alert" aria-live="polite" hidden>
+          Não foi possível carregar as candidaturas. Tente novamente mais tarde.
+        </div>
+
+        <!-- Conteúdo do perfil -->
+        <div id="perfil-conteudo" hidden>
+        
         <div class="header"><h2>Minhas Candidaturas / OS</h2></div>
         <section class="card mb-md">
           <div class="filters">
-            <input
-              class="input input-grow"
-              placeholder="Buscar vaga ou OS"
-            /><select class="input">
-              <option>Status</option>
+            <input id="filterTituloVaga" class="input input-grow" value="" placeholder="Buscar vaga ou OS"/>
+            <select id="filterStatusVaga" class="input">
+              <option value="" selected disabled>Status</option>
               <option>Em análise</option>
-              <option>Selecionado</option>
               <option>Em andamento</option>
               <option>Concluída</option>
-              <option>Cancelada</option></select
-            ><select class="input">
-              <option>Tipo</option>
+              <option>Cancelada</option></select>
+             <select id="filterTipoVaga" class="input">
+              <option value="" selected disabled>Tipo</option>
               <option>Vaga</option>
-              <option>Ordem de Serviço</option></select
-            ><button class="btn btn-primary">Filtrar</button>
+              <option>OS</option></select>
+            <button class="btn btn-primary" id="btnFiltrar">Filtrar</button>
+            <button class="btn" type="button" id="btnLimparFiltros">Limpar</button>
           </div>
         </section>
-        <div class="loading-skeleton mb-md" aria-busy="true" aria-label="Carregando candidaturas e ordens de serviço">
-          <div class="skeleton skeleton-row"></div>
-          <div class="skeleton skeleton-row"></div>
-          <div class="skeleton skeleton-row"></div>
-          <div class="skeleton skeleton-row"></div>
-          <div class="skeleton skeleton-row"></div>
+        <div class="alert alert-error mb-md" id="msg-empty" aria-live="polite" hidden>
+          Não há Candidaturas ou Ordens de Serviço para exibir.
         </div>
-        <div class="empty-state mb-md" aria-live="polite">
-          Nenhuma candidatura ou OS vinculada.
-        </div>
-        <div class="alert alert-error mb-md" role="alert" aria-live="polite">
+        <div class="alert alert-error mb-md" role="alert" id="msg-error" aria-live="polite" hidden>
           Erro ao carregar registros.
         </div>
         <section class="card">
           <div class="table-responsive">
-            <table class="table table-card" aria-label="Tabela de registros">
+            <table class="table table-card" aria-label="Tabela de registros" id="tableCandidaturas">
               <thead>
               <tr>
                 <th>Tipo</th>
@@ -103,61 +109,26 @@
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <td data-label="Tipo">Vaga</td>
-                <td data-label="Título">Costureira Pilotista</td>
-                <td data-label="Empresa">Confecção X</td>
-                <td data-label="Status"><span class="badge">Em análise</span></td>
-                <td data-label="Ações">
-                  <div class="table-actions">
-                    <a href="18-vaga-detalhe.html" class="btn btn-primary"
-                      >Ver</a
-                    ><button class="btn btn-danger" type="button">
-                      Cancelar
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td data-label="Tipo">OS</td>
-                <td data-label="Título">Produção lote verão</td>
-                <td data-label="Empresa">Confecção X</td>
-                <td data-label="Status"><span class="badge badge-warning">Em andamento</span></td>
-                <td data-label="Ações">
-                  <div class="table-actions">
-                    <a
-                      href="19-ordem-servico-detalhe.html"
-                      class="btn btn-primary"
-                      >Ver OS</a
-                    ><a href="23-avaliacao-os.html" class="btn">Avaliar</a>
-                  </div>
-                </td>
-              </tr>
               </tbody>
             </table>
           </div>
           <div class="pagination">
-            <span>Mostrando 1-10 de 14</span>
-            <div class="pages">
-              <span class="page-btn active">1</span
-              ><span class="page-btn">2</span>
+            <span id="resumoPaginas">Mostrando 1-10 de 14</span>
+            <div id="pages" class="pages">
             </div>
           </div>
-          <div class="modal-static" role="alert" aria-live="polite">
-            <div class="modal-static-title">Confirmação de exclusão</div>
-            <p>
-              Antes de excluir ou encerrar um registro, o sistema deve exibir
-              esta confirmação visual e informar que a ação não poderá ser
-              desfeita.
+          <div class="modal-static" role="alert" aria-live="polite" hidden>
+            <div class="modal-static-title">Confirmação de Cancelamento</div>
+            <p> Você tem certeza que deseja cancelar a sua candidatura? Essa ação não poderá ser desfeita.
             </p>
             <div class="cluster mt-sm">
-              <button class="btn btn-danger" type="button">
-                Confirmar exclusão</button
-              ><button class="btn" type="button">Cancelar</button>
+              <button class="btn btn-danger" type="button" id="btnConfirmarCancelamento">Confirmar exclusão</button>
+              <button class="btn" type="button" id="btnFecharCancelamento">Cancelar</button>
             </div>
           </div>
         </section>
       </main>
+    </div>
     </div>
     <script src="../js/20-minhas-candidaturas.js"></script>
   </body>

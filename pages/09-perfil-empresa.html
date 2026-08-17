@@ -57,21 +57,33 @@
         ><a href="24-suporte.html">Suporte</a>
       </aside>
       <main class="main" role="main" aria-label="Conteúdo principal">
+                <!-- Estado de carregamento -->
+        <div id="perfil-loading" class="text-center">
+          <p>Carregando perfil...</p>
+        </div>
+
+        <!-- Estado de erro -->
+        <div id="perfil-erro" class="alert" role="alert" aria-live="polite" hidden>
+          Não foi possível carregar este perfil. Tente novamente mais tarde.
+        </div>
+
+        <!-- Conteúdo do perfil -->
+        <div id="perfil-conteudo" hidden>
         <div class="header">
           <h2>Perfil da Empresa</h2>
           <div class="header-actions">
             <a href="04-dashboard-empresa.html" class="btn">Cancelar/Voltar</a
-            ><button class="btn btn-primary">Salvar alterações</button>
+            ><button class="btn btn-primary" type="submit" form="perfil-empresa">Salvar alterações</button>
           </div>
         </div>
-        <form class="card">
-          <div class="alert alert-success" role="alert" aria-live="polite">
-            Área para feedback de alterações.
-          </div>
+        <form class="card" id="perfil-empresa">
+          <div class="alert alert-success" role="alert" aria-live="polite" hidden>Alterações salvas com sucesso.</div>
+          <div class="form-group"></div>
+          <section class="card">
           <div class="section-title">Responsável legal</div>
           <div class="form-row">
             <div class="form-group">
-              <label for="pe-resp">Nome completo do responsável legal</label
+              <label for="pe-resp">Nome Completo</label
               ><input id="pe-resp" class="input" required />
             </div>
             <div class="form-group">
@@ -84,6 +96,9 @@
               />
             </div>
           </div>
+          </section>
+          <div class="form-group"></div>
+          <section class="card">
           <div class="section-title">Dados da empresa</div>
           <div class="form-row">
             <div class="form-group">
@@ -95,12 +110,8 @@
               ><input id="pe-fantasia" class="input" required />
             </div>
           </div>
-          <div class="form-group">
-            <label for="pe-descricao">Descrição do perfil</label
-            ><textarea id="pe-descricao" class="input"></textarea>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
+<div class="form-row">
+              <div class="form-group">
               <label for="pe-cnpj">CNPJ</label
               ><input
                 id="pe-cnpj"
@@ -109,15 +120,31 @@
                 required
               />
             </div>
+                        <div class="form-group">
+              <label for="pe-ramo">Ramo de atuação</label
+              ><input id="pe-ramo" class="input" required />
+            </div>
+</div>
+          <div class="form-row">
             <div class="form-group">
               <label for="pe-email">E-mail</label
               ><input id="pe-email" type="email" class="input" required />
             </div>
+            <div class="form-group">
+              <label for="pe-telefone">Telefone/Whatsapp</label>
+              <input id="pe-telefone" type="tel" class="input" placeholder="(00) 00000-0000" required/>
+            </div>
           </div>
-          <div class="section-title">Endereço comercial</div>
-          <section class="grid grid-2">
+          <div class="form-group">
+            <label for="pe-descricao">Descrição do perfil</label
+            ><textarea id="pe-descricao" class="input"></textarea>
+            <span class="field-message">Opcional. Resuma as habilidades e experiências que você procura em até 500 caracteres.</span>
+          </div>
+          </section>
+          <section class="grid grid-1">
+          <div class="form-group"></div>
             <div class="card">
-              <h3>Endereço principal</h3>
+          <div class="section-title">Endereço comercial</div>
               <div class="form-row">
                 <div class="form-group">
                   <label for="pe-cep">CEP</label
@@ -131,7 +158,7 @@
               <div class="form-row">
                 <div class="form-group">
                   <label for="pe-numero">Número</label
-                  ><input id="pe-numero" class="input" required />
+                  ><input id="pe-numero" class="input" type="number" required />
                 </div>
                 <div class="form-group">
                   <label for="pe-bairro">Bairro</label
@@ -153,41 +180,7 @@
                 ><input id="pe-estado" class="input" required />
               </div>
             </div>
-            <div class="card">
-              <h3>Contatos e acesso</h3>
-              <div class="form-group">
-                <label for="pe-telefone">Telefone/Whatsapp</label
-                ><input id="pe-telefone" type="tel" class="input" required />
-              </div>
-              <div class="form-group">
-                <label for="pe-email">E-mail</label
-                ><input id="pe-email" type="email" class="input" required />
-              </div>
-              <div class="form-group">
-                <label for="pe-ramo">Ramo de atuação</label
-                ><input id="pe-ramo" class="input" required />
-              </div>
-            </div>
           </section>
-          <div class="section-title">Segurança</div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="pe-senha">Nova senha</label>
-              <div class="date-input-wrapper" style="position: static;">
-                <input id="pe-senha" type="password" class="input" placeholder="Deixe em branco para manter" />
-              </div>
-              <span class="field-message">Preencha apenas se deseja alterar a senha.</span>
-            </div>
-            <div class="form-group"></div>
-          </div>
-          <div class="form-group">
-            <label for="pe-status">Status</label
-            ><select id="pe-status" class="input">
-              <option>Ativo</option>
-              <option>Pendente</option>
-              <option>Inativo</option>
-            </select>
-          </div>
           <div class="form-actions">
             <a href="04-dashboard-empresa.html" class="btn">Cancelar/Voltar</a
             ><button class="btn btn-primary" type="submit">
@@ -195,6 +188,7 @@
             </button>
           </div>
         </form>
+        </div>
       </main>
     </div>
     <script src="../js/09-perfil-empresa.js"></script>

@@ -53,175 +53,116 @@
       </aside>
       <main class="main" role="main" aria-label="Conteúdo principal">
 
-        <div class="profile-header">
-          <div class="profile-avatar-lg">MS</div>
-          <div class="profile-info">
-            <h2>Maria Silva</h2>
-            <div class="profile-rating">
-              <i class="bi bi-star-fill"></i
-              ><i class="bi bi-star-fill"></i
-              ><i class="bi bi-star-fill"></i
-              ><i class="bi bi-star-fill"></i
-              ><i class="bi bi-star-fill"></i>
-              <span>4.7 &middot; 12 avaliações</span>
+        <!-- Estado de carregamento -->
+        <div id="perfil-loading" class="text-center">
+          <p>Carregando perfil...</p>
+        </div>
+
+        <!-- Estado de erro -->
+        <div id="perfil-erro" class="alert" role="alert" aria-live="polite" hidden>
+          Não foi possível carregar este perfil. Tente novamente mais tarde.
+        </div>
+
+        <!-- Conteúdo do perfil -->
+        <div id="perfil-conteudo" hidden>
+
+          <div class="profile-header">
+            <div class="profile-avatar-lg" id="avatar-freelancer"></div>
+            <div class="profile-info">
+              <h2 id="nome-freelancer"></h2>
+              <div class="profile-rating">
+                <span id="estrelas-media"></span>
+                <span id="texto-avaliacoes"></span>
+              </div>
+              <div class="profile-location">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span id="localizacao-freelancer"></span>
+              </div>
+              <div class="multi-select" style="margin-top: 4px;">
+                <span class="badge badge-success">Disponível</span
+                ><span class="badge" id="badge-tipo-negocio"></span>
+              </div>
             </div>
-            <div class="profile-location">
-              <i class="bi bi-geo-alt-fill"></i>
-              <span>Bairro Central, São Paulo - SP</span>
-            </div>
-            <div class="multi-select" style="margin-top: 4px;">
-              <span class="badge badge-success">Disponível</span
-              ><span class="badge">MEI</span>
+            <div class="profile-actions">
+              <button class="btn btn-primary btn-lg">
+                <i class="bi bi-send-fill"></i> Convidar para vaga
+              </button>
             </div>
           </div>
-          <div class="profile-actions">
+
+          <div class="grid grid-2">
+            <div class="stack">
+              <section class="card">
+                <div class="section-title">Sobre</div>
+                <p id="descricao-freelancer" style="color: var(--text-primary); line-height: 1.7;"></p>
+              </section>
+
+              <section class="card">
+                <div class="section-title">Especialidades</div>
+                <div class="multi-select" id="lista-especialidades"></div>
+              </section>
+
+              <section class="card">
+                <div class="section-title">Máquinas que possui</div>
+                <div class="multi-select" id="lista-maquinas"></div>
+              </section>
+            </div>
+
+            <div class="stack">
+              <section class="card">
+                <div class="section-title">Informações Profissionais</div>
+                <div class="profile-section">
+                  <div class="profile-meta-row">
+                    <span class="profile-meta-label">Tipo de negócio</span>
+                    <span class="profile-meta-value" id="info-tipo-negocio"></span>
+                  </div>
+                  <div class="profile-meta-row">
+                    <span class="profile-meta-label">Experiência</span>
+                    <span class="profile-meta-value" id="info-experiencia"></span>
+                  </div>
+                  <div class="profile-meta-row">
+                    <span class="profile-meta-label">Tamanho da oficina</span>
+                    <span class="profile-meta-value" id="info-oficina"></span>
+                  </div>
+                  <div class="profile-meta-row">
+                    <span class="profile-meta-label">Disponibilidade</span>
+                    <span class="profile-meta-value" id="info-disponibilidade"></span>
+                  </div>
+                  <div class="profile-meta-row">
+                    <span class="profile-meta-label">Preferências</span>
+                    <span class="profile-meta-value" id="info-preferencias"></span>
+                  </div>
+                  <div class="profile-meta-row">
+                    <span class="profile-meta-label">Como fecha serviço</span>
+                    <span class="profile-meta-value" id="info-fechamento"></span>
+                  </div>
+                  <div class="profile-meta-row">
+                    <span class="profile-meta-label">Produtor fixo</span>
+                    <span class="profile-meta-value" id="info-produtor-fixo"></span>
+                  </div>
+                  <div class="profile-meta-row">
+                    <span class="profile-meta-label">Veículo próprio</span>
+                    <span class="profile-meta-value" id="info-veiculo"></span>
+                  </div>
+                  <div class="profile-meta-row">
+                    <span class="profile-meta-label">Faturamento médio</span>
+                    <span class="profile-meta-value" id="info-faturamento"></span>
+                  </div>
+                </div>
+              </section>
+
+              <section class="card">
+                <div class="section-title">Avaliações Recentes</div>
+                <div id="lista-avaliacoes"></div>
+              </section>
+            </div>
+          </div>
+
+          <div class="text-center mt-lg">
             <button class="btn btn-primary btn-lg">
               <i class="bi bi-send-fill"></i> Convidar para vaga
             </button>
           </div>
-        </div>
-
-        <div class="grid grid-2">
-          <div class="stack">
-            <section class="card">
-              <div class="section-title">Sobre</div>
-              <p style="color: var(--text-primary); line-height: 1.7;">
-                Costureira pilotista com mais de 5 anos de experiência em peças
-                femininas. Especialista em modelagem e acabamento de alta
-                qualidade. Atendo confecções de pequeno e médio porte com
-                agilidade e precisão.
-              </p>
-            </section>
-
-            <section class="card">
-              <div class="section-title">Especialidades</div>
-              <div class="multi-select">
-                <span class="badge">Costura reta</span
-                ><span class="badge">Overloque</span
-                ><span class="badge">Modelagem</span
-                ><span class="badge">Peça piloto</span
-                ><span class="badge">Acabamento</span
-                ><span class="badge">Bordado</span>
-              </div>
-            </section>
-
-            <section class="card">
-              <div class="section-title">Máquinas que possui</div>
-              <div class="multi-select">
-                <span class="badge">Reta</span
-                ><span class="badge">Overloque</span
-                ><span class="badge">Galoneira</span
-                ><span class="badge">Interlock</span
-                ><span class="badge">Travete</span>
-              </div>
-            </section>
-          </div>
-
-          <div class="stack">
-            <section class="card">
-              <div class="section-title">Informações Profissionais</div>
-              <div class="profile-section">
-                <div class="profile-meta-row">
-                  <span class="profile-meta-label">Tipo de negócio</span>
-                  <span class="profile-meta-value">MEI</span>
-                </div>
-                <div class="profile-meta-row">
-                  <span class="profile-meta-label">Experiência</span>
-                  <span class="profile-meta-value">3 a 5 anos</span>
-                </div>
-                <div class="profile-meta-row">
-                  <span class="profile-meta-label">Tamanho da oficina</span>
-                  <span class="profile-meta-value">Só eu</span>
-                </div>
-                <div class="profile-meta-row">
-                  <span class="profile-meta-label">Disponibilidade</span>
-                  <span class="profile-meta-value">Período integral</span>
-                </div>
-                <div class="profile-meta-row">
-                  <span class="profile-meta-label">Preferências</span>
-                  <span class="profile-meta-value">Serviços pontuais, Grandes lotes</span>
-                </div>
-                <div class="profile-meta-row">
-                  <span class="profile-meta-label">Como fecha serviço</span>
-                  <span class="profile-meta-value">Indicação, Redes sociais</span>
-                </div>
-                <div class="profile-meta-row">
-                  <span class="profile-meta-label">Produtor fixo</span>
-                  <span class="profile-meta-value">Não</span>
-                </div>
-                <div class="profile-meta-row">
-                  <span class="profile-meta-label">Veículo próprio</span>
-                  <span class="profile-meta-value">Sim</span>
-                </div>
-                <div class="profile-meta-row">
-                  <span class="profile-meta-label">Faturamento médio</span>
-                  <span class="profile-meta-value">De R$ 3000 a R$ 6000</span>
-                </div>
-              </div>
-            </section>
-
-            <section class="card">
-              <div class="section-title">Avaliações</div>
-              <div class="review-card">
-                <p>"Excelente profissional. Entregou tudo antes do prazo com qualidade impecável."</p>
-                <div class="review-author">
-                  <strong>Confecção Silva</strong>
-                  <span class="review-stars"
-                    ><i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star-fill"></i
-                  ></span>
-                </div>
-              </div>
-              <div class="review-card">
-                <p>"Muito pontual e caprichosa. Já contratei 3 vezes e sempre superou expectativas."</p>
-                <div class="review-author">
-                  <strong>Ateliê Costa</strong>
-                  <span class="review-stars"
-                    ><i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star-fill"></i
-                  ></span>
-                </div>
-              </div>
-              <div class="review-card">
-                <p>"Recomendo demais. Acabamento perfeito e comunicação excelente."</p>
-                <div class="review-author">
-                  <strong>Marca W</strong>
-                  <span class="review-stars"
-                    ><i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star"></i
-                  ></span>
-                </div>
-              </div>
-              <div class="review-card">
-                <p>"Bom trabalho, entregou dentro do prazo combinado."</p>
-                <div class="review-author">
-                  <strong>Confecção Y</strong>
-                  <span class="review-stars"
-                    ><i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star-fill"></i
-                  ></span>
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
-
-        <div class="text-center mt-lg">
-          <button class="btn btn-primary btn-lg">
-            <i class="bi bi-send-fill"></i> Convidar para vaga
-          </button>
         </div>
       </main>
     </div>

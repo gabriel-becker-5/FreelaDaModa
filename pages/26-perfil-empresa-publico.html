@@ -4,14 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Perfil Empresa</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"/>
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
     <link rel="stylesheet" href="../css/base.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -53,27 +49,41 @@
       </aside>
       <main class="main" role="main" aria-label="Conteúdo principal">
 
+        <!-- Estado de carregamento -->
+        <div id="perfil-loading" class="text-center">
+          <p>Carregando perfil...</p>
+        </div>
+
+        <!-- Estado de erro -->
+        <div id="perfil-erro" class="alert" role="alert" aria-live="polite" hidden>
+          Não foi possível carregar este perfil. Tente novamente mais tarde.
+        </div>
+        <!-- Conteúdo do perfil -->
+        <div id="perfil-conteudo" hidden>
+
         <div class="profile-header">
-          <div class="profile-avatar-lg">CS</div>
+          <div class="profile-avatar-lg" id="avatar-empresa"></div>
           <div class="profile-info">
-            <h2>Confecção Silva</h2>
+            <h2 id="nome-empresa"></h2>
             <div class="profile-rating">
+              <span id="estrelas-media">
               <i class="bi bi-star-fill"></i
               ><i class="bi bi-star-fill"></i
               ><i class="bi bi-star-fill"></i
               ><i class="bi bi-star-fill"></i
               ><i class="bi bi-star-half"></i>
-              <span>4.5 &middot; 28 avaliações</span>
+              </span>
+              <span id="texto-avaliacoes"></span>
             </div>
             <div class="profile-location">
               <i class="bi bi-geo-alt-fill"></i>
-              <span>São Paulo - SP</span>
+              <span id="localizacao-empresa"></span>
             </div>
-            <div class="multi-select" style="margin-top: 4px;">
+            <!-- <div class="multi-select" style="margin-top: 4px;">
               <span class="badge">Moda Feminina</span
               ><span class="badge">Moda Casual</span
               ><span class="badge">Alta Costura</span>
-            </div>
+            </div> -->
           </div>
           <div class="profile-actions">
             <button class="btn btn-primary btn-lg">
@@ -86,93 +96,42 @@
           <div class="stack">
             <section class="card">
               <div class="section-title">Sobre a Empresa</div>
-              <p style="color: var(--text-primary); line-height: 1.7; margin-bottom: 16px;">
-                Confecção com mais de 15 anos de mercado, especializada em moda
-                feminina casual e alta costura. Atendemos lojistas de todo o
-                Brasil com coleções sazonais e produção sob demanda.
-              </p>
-              <div class="profile-meta-row">
-                <span class="profile-meta-label">Razão Social</span>
-                <span class="profile-meta-value">Confecção Silva Ltda</span>
-              </div>
-              <div class="profile-meta-row">
-                <span class="profile-meta-label">CNPJ</span>
-                <span class="profile-meta-value">00.000.000/0001-00</span>
-              </div>
+              <p id="descricao-empresa" style="color: var(--text-primary); line-height: 1.7; margin-bottom: 16px;"></p>
               <div class="profile-meta-row">
                 <span class="profile-meta-label">Ramo de atuação</span>
-                <span class="profile-meta-value">Moda Feminina</span>
+                <span id="ramo-empresa" class="profile-meta-value"></span>
               </div>
             </section>
-
             <section class="card">
               <div class="section-title">Vagas Ativas</div>
-              <div class="stack-sm" style="margin-top: 8px;">
-                <div class="card" style="background: var(--surface-alt); padding: 14px;">
-                  <div class="cluster-between">
-                    <div>
-                      <strong style="font-size: 14px;">Costureira Pilotista</strong>
-                      <p style="font-size: 12px; margin: 2px 0;">R$ 1.200 &middot; Presencial</p>
-                    </div>
-                    <div class="cluster">
-                      <span class="badge">Aberta</span>
-                      <a href="18-vaga-detalhe.html" class="btn" style="padding: 5px 10px; font-size: 12px;">Ver vaga</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="card" style="background: var(--surface-alt); padding: 14px;">
-                  <div class="cluster-between">
-                    <div>
-                      <strong style="font-size: 14px;">Modelista Sênior</strong>
-                      <p style="font-size: 12px; margin: 2px 0;">R$ 2.800 &middot; Remota</p>
-                    </div>
-                    <div class="cluster">
-                      <span class="badge">Aberta</span>
-                      <a href="18-vaga-detalhe.html" class="btn" style="padding: 5px 10px; font-size: 12px;">Ver vaga</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="card" style="background: var(--surface-alt); padding: 14px;">
-                  <div class="cluster-between">
-                    <div>
-                      <strong style="font-size: 14px;">Acabamento e Revisão</strong>
-                      <p style="font-size: 12px; margin: 2px 0;">R$ 900 &middot; Híbrida</p>
-                    </div>
-                    <div class="cluster">
-                      <span class="badge">Aberta</span>
-                      <a href="18-vaga-detalhe.html" class="btn" style="padding: 5px 10px; font-size: 12px;">Ver vaga</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div id="lista-vagas-ativas" class="stack-sm" style="margin-top: 8px;"></div>
             </section>
           </div>
-
           <div class="stack">
             <section class="card">
               <div class="section-title">Contato</div>
               <div class="profile-section">
                 <div class="profile-meta-row">
                   <span class="profile-meta-label">Telefone/Whatsapp</span>
-                  <span class="profile-meta-value">(11) 99999-9999</span>
+                  <span id="telefone-empresa" class="profile-meta-value"></span>
                 </div>
                 <div class="profile-meta-row">
                   <span class="profile-meta-label">E-mail</span>
-                  <span class="profile-meta-value">contato@confecçaosilva.com.br</span>
+                  <span id="email-empresa" class="profile-meta-value"></span>
                 </div>
                 <div class="profile-meta-row">
                   <span class="profile-meta-label">Endereço</span>
-                  <span class="profile-meta-value">Rua das Flores, 123, Centro, São Paulo - SP</span>
+                  <span id="endereco-empresa" class="profile-meta-value"></span>
                 </div>
               </div>
             </section>
-
             <section class="card">
               <div class="section-title">Avaliações Recebidas</div>
+              <div id="lista-avaliacoes">
               <div class="review-card">
-                <p>"Empresa séria e organizada. Briefings claros e pagamento sempre em dia."</p>
+                <p></p>
                 <div class="review-author">
-                  <strong>Maria Silva</strong>
+                  <strong></strong>
                   <span class="review-stars"
                     ><i class="bi bi-star-fill"></i
                     ><i class="bi bi-star-fill"></i
@@ -183,9 +142,9 @@
                 </div>
               </div>
               <div class="review-card">
-                <p>"Ótima comunicação durante todo o processo. Super recomendo!"</p>
+                <p></p>
                 <div class="review-author">
-                  <strong>João Oliveira</strong>
+                  <strong></strong>
                   <span class="review-stars"
                     ><i class="bi bi-star-fill"></i
                     ><i class="bi bi-star-fill"></i
@@ -196,9 +155,9 @@
                 </div>
               </div>
               <div class="review-card">
-                <p>"Briefings muito claros e material de apoio excelente."</p>
+                <p></p>
                 <div class="review-author">
-                  <strong>Ana Costa</strong>
+                  <strong></strong>
                   <span class="review-stars"
                     ><i class="bi bi-star-fill"></i
                     ><i class="bi bi-star-fill"></i
@@ -208,15 +167,16 @@
                   ></span>
                 </div>
               </div>
+              </div>
             </section>
           </div>
         </div>
-
         <div class="text-center mt-lg">
           <button class="btn btn-primary btn-lg">
             <i class="bi bi-chat-dots-fill"></i> Entrar em contato
           </button>
         </div>
+      </div>
       </main>
     </div>
     <script src="../js/26-perfil-empresa-publico.js"></script>

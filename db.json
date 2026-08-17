@@ -1,7 +1,7 @@
 {
   "freelancers": [
     {
-      "id": "1",
+      "id": "-DU9G2RSk6s",
       "nome": "Karina Vicente",
       "email": "karinavicente06@gmail.com",
       "telefone": "(47) 99999-9999",
@@ -33,12 +33,14 @@
         "complemento": "Apto 101",
         "cidade": "Blumenau",
         "estado": "SC"
-      }
+      },
+      "mediaAvaliacoes": 4.45,
+      "totalAvaliacoes": 33
     }
   ],
   "empresas": [
     {
-      "id": "1",
+      "id": "0UEUrH8HgJE",
       "razaoSocial": "Confecção Silva & Cia",
       "nomeFantasia": "Silva Fashion",
       "cnpj": "12.345.678/0001-90",
@@ -48,7 +50,9 @@
       "ramo": "Moda Feminina",
       "porte": "Média empresa",
       "cidade": "São Paulo",
-      "estado": "SP"
+      "estado": "SP",
+      "mediaAvaliacoes": 4.45,
+      "totalAvaliacoes": 33
     }
   ],
   "vagas": [
@@ -87,6 +91,327 @@
       "descricao": "10 modelagens e graduação de camisas femininas",
       "status": "Aberta",
       "id": "ZlDvpb1"
-    }
+    },
+
+      {
+        "id": "1",
+        "empresaId": "0UEUrH8HgJE",
+        "titulo": "Costureira Pilotista",
+        "valor": "1.200",
+        "modalidade": "Presencial",
+        "status": "ativa",
+        "link": "18-vaga-detalhe.html"
+      },
+      {
+        "id": "2",
+        "empresaId": "0UEUrH8HgJE",
+        "titulo": "Costureira Industrial",
+        "valor": "2.800",
+        "modalidade": "Presencial",
+        "status": "ativa",
+        "link": "18-vaga-detalhe.html"
+      },
+      {
+        "id": "3",
+        "empresaId": "0UEUrH8HgJE",
+        "titulo": "Técnico(a) em Controle de Qualidade Têxtil",
+        "valor": "3.500",
+        "modalidade": "Híbrido",
+        "status": "ativa",
+        "link": "18-vaga-detalhe.html"
+      }
+      
+  ],
+  "avaliacoes": [
+    {
+      "id": "1",
+      "freelancerId": "-DU9G2RSk6s",
+      "nota": 5,
+      "comentario": "Excelente profissional, muito competente e pontual na entrega.",
+      "autor": "Carlos"
+    },
+    {
+      "id": "2",
+      "freelancerId": "-DU9G2RSk6s",
+      "nota": 4,
+      "comentario": "Bom trabalho, demonstrou conhecimento técnico e atenção aos detalhes.",
+      "autor": "Mariana"
+    },
+    {
+      "id": "3",
+      "freelancerId": "-DU9G2RSk6s",
+      "nota": 5,
+      "comentario": "Profissional dedicado, entregou um ótimo resultado dentro do prazo.",
+      "autor": "Rafael"
+    },
+    {
+      "id": "4",
+      "empresaId": "0UEUrH8HgJE",
+      "nota": 4,
+      "comentario": "Boa estrutura e equipe profissional. Experiência bastante positiva.",
+      "autor": "Camila"
+    },
+    {
+      "id": "5",
+      "empresaId": "0UEUrH8HgJE",
+      "nota": 5,
+      "comentario": "Excelente empresa, ambiente organizado e boas oportunidades.",
+      "autor": "Lucas"
+    },
+    {
+      "id": "6",
+      "empresaId": "0UEUrH8HgJE",
+      "nota": 4,
+      "comentario": "Empresa séria, com processos bem organizados e bons projetos.",
+      "autor": "Marcos"
+    }    
+
+  ],
+  "candidaturas": [
+    {
+      "id": "1",
+      "titulo": "Produção Lote de verão",
+      "nomeEmpresa": "VestiLar Confecções",
+      "status": "Em andamento",
+      "tipo": "OS",
+      "link": "18-vaga-detalhe.html",
+      "freelancerId": "-DU9G2RSk6s"
+    },
+    {
+      "id": "2",
+      "titulo": "Costureira Pilotista",
+      "nomeEmpresa": "Alvorada Moda & Têxtil",
+      "status": "Em análise",
+      "tipo": "Vaga",
+      "link": "18-vaga-detalhe.html",
+      "freelancerId": "-DU9G2RSk6s"
+    },
+      {
+      "id": "3",
+      "titulo": "Costura de amostras",
+      "nomeEmpresa": "VestiLar Confecções",
+      "status": "Concluída",
+      "tipo": "OS",
+      "link": "18-vaga-detalhe.html",
+      "freelancerId": "-DU9G2RSk6s"
+    },
+    {
+      "id": "4",
+      "titulo": "Costureira Pilotista",
+      "nomeEmpresa": "Alvorada Moda & Têxtil",
+      "status": "Em análise",
+      "tipo": "Vaga",
+      "link": "18-vaga-detalhe.html",
+      "freelancerId": "-DU9G2RSk6s"
+    },
+    { 
+  "id": "5", 
+  "titulo": "Ajuste de modelagem de peças", 
+  "nomeEmpresa": "Fio & Forma Confecções", 
+  "status": "Em andamento", 
+  "tipo": "OS", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+},
+{ 
+  "id": "6", 
+  "titulo": "Costura de peças piloto", 
+  "nomeEmpresa": "Bella Linha Têxtil", 
+  "status": "Em análise", 
+  "tipo": "Vaga", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+},
+{ 
+  "id": "7", 
+  "titulo": "Produção de camisetas básicas", 
+  "nomeEmpresa": "Sulvest Confecções", 
+  "status": "Concluída", 
+  "tipo": "OS", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+},
+{ 
+  "id": "8", 
+  "titulo": "Costureira para linha fitness", 
+  "nomeEmpresa": "MoveFit Moda Esportiva", 
+  "status": "Em andamento", 
+  "tipo": "Vaga", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+},
+{ 
+  "id": "9", 
+  "titulo": "Acabamento de peças em malha", 
+  "nomeEmpresa": "TramaSul Indústria Têxtil", 
+  "status": "Em análise", 
+  "tipo": "OS", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+},
+{ 
+  "id": "10", 
+  "titulo": "Costureira para produção em série", 
+  "nomeEmpresa": "Estilo Norte Confecções", 
+  "status": "Em andamento", 
+  "tipo": "Vaga", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+},
+{ 
+  "id": "11", 
+  "titulo": "Montagem de peças de alfaiataria", 
+  "nomeEmpresa": "Corte & Linha Moda", 
+  "status": "Concluída", 
+  "tipo": "OS", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+},
+{ 
+  "id": "12", 
+  "titulo": "Costureira para coleção primavera", 
+  "nomeEmpresa": "Essenza Moda Feminina", 
+  "status": "Em análise", 
+  "tipo": "Vaga", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+},
+{ 
+  "id": "13", 
+  "titulo": "Produção de uniformes profissionais", 
+  "nomeEmpresa": "ProUniforme Têxtil", 
+  "status": "Em andamento", 
+  "tipo": "OS", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+},
+{ 
+  "id": "14", 
+  "titulo": "Costureira para peças de moda feminina", 
+  "nomeEmpresa": "Ateliê Nova Estação", 
+  "status": "Concluída", 
+  "tipo": "Vaga", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+},
+
+    {
+      "id": "1",
+      "titulo": "Produção Lote de verão",
+      "nomeEmpresa": "VestiLar Confecções",
+      "status": "Em andamento",
+      "tipo": "OS",
+      "link": "18-vaga-detalhe.html",
+      "freelancerId": "-DU9G2RSk6s"
+    },
+    {
+      "id": "2",
+      "titulo": "Costureira Pilotista",
+      "nomeEmpresa": "Alvorada Moda & Têxtil",
+      "status": "Em análise",
+      "tipo": "Vaga",
+      "link": "18-vaga-detalhe.html",
+      "freelancerId": "-DU9G2RSk6s"
+    },
+      {
+      "id": "3",
+      "titulo": "Costura de amostras",
+      "nomeEmpresa": "VestiLar Confecções",
+      "status": "Concluída",
+      "tipo": "OS",
+      "link": "18-vaga-detalhe.html",
+      "freelancerId": "-DU9G2RSk6s"
+    },
+    {
+      "id": "4",
+      "titulo": "Costureira Pilotista",
+      "nomeEmpresa": "Alvorada Moda & Têxtil",
+      "status": "Em análise",
+      "tipo": "Vaga",
+      "link": "18-vaga-detalhe.html",
+      "freelancerId": "-DU9G2RSk6s"
+    },
+    { 
+  "id": "5", 
+  "titulo": "Ajuste de modelagem de peças", 
+  "nomeEmpresa": "Fio & Forma Confecções", 
+  "status": "Em andamento", 
+  "tipo": "OS", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+},
+{ 
+  "id": "6", 
+  "titulo": "Costura de peças piloto", 
+  "nomeEmpresa": "Bella Linha Têxtil", 
+  "status": "Em análise", 
+  "tipo": "Vaga", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+},
+{ 
+  "id": "7", 
+  "titulo": "Produção de camisetas básicas", 
+  "nomeEmpresa": "Sulvest Confecções", 
+  "status": "Concluída", 
+  "tipo": "OS", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+},
+{ 
+  "id": "8", 
+  "titulo": "Costureira para linha fitness", 
+  "nomeEmpresa": "MoveFit Moda Esportiva", 
+  "status": "Em andamento", 
+  "tipo": "Vaga", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+},
+{ 
+  "id": "9", 
+  "titulo": "Acabamento de peças em malha", 
+  "nomeEmpresa": "TramaSul Indústria Têxtil", 
+  "status": "Em análise", 
+  "tipo": "OS", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+},
+{ 
+  "id": "10", 
+  "titulo": "Costureira para produção em série", 
+  "nomeEmpresa": "Estilo Norte Confecções", 
+  "status": "Em andamento", 
+  "tipo": "Vaga", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+},
+{ 
+  "id": "11", 
+  "titulo": "Montagem de peças de alfaiataria", 
+  "nomeEmpresa": "Corte & Linha Moda", 
+  "status": "Concluída", 
+  "tipo": "OS", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+},
+{ 
+  "id": "13", 
+  "titulo": "Produção de uniformes profissionais", 
+  "nomeEmpresa": "ProUniforme Têxtil", 
+  "status": "Em andamento", 
+  "tipo": "OS", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+},
+{ 
+  "id": "14", 
+  "titulo": "Costureira para peças de moda feminina", 
+  "nomeEmpresa": "Ateliê Nova Estação", 
+  "status": "Concluída", 
+  "tipo": "Vaga", 
+  "link": "18-vaga-detalhe.html", 
+  "freelancerId": "-DU9G2RSk6s" 
+}
+
   ]
 }

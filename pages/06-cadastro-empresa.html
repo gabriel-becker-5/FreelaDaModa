@@ -44,13 +44,15 @@
           </div>
         </div>
         <form class="card">
-          <div class="alert alert-success" role="alert" aria-live="polite">
-            Área para feedback de cadastro da empresa.
+          <div class="alert alert-success" role="alert" aria-live="polite" hidden>
+            Cadastro realizado com sucesso! Você será redirecionado em 5 segundos.
           </div>
+          <div class="form-group"></div>
+          <div class="card">
           <div class="section-title">Responsável legal</div>
           <div class="form-row">
             <div class="form-group">
-              <label for="resp-nome">Nome completo do responsável legal</label
+              <label for="resp-nome">Nome Completo</label
               ><input id="resp-nome" class="input" required />
             </div>
             <div class="form-group">
@@ -63,6 +65,9 @@
               />
             </div>
           </div>
+          </div>
+          <div class="form-group"></div>
+          <div class="card">
           <div class="section-title">Dados da empresa</div>
           <div class="form-row">
             <div class="form-group">
@@ -74,29 +79,27 @@
               ><input id="fantasia" class="input" required />
             </div>
           </div>
-          <div class="form-group">
-            <label for="descricao-empresa">Descrição do perfil</label
-            ><textarea id="descricao-empresa" class="input" required></textarea>
-          </div>
+
           <div class="form-row">
             <div class="form-group">
               <label for="cnpj">CNPJ</label
               >              <input
                 id="cnpj"
-                class="input input-error"
+                class="input"
                 placeholder="00.000.000/0000-00"
-                value="00.000.000/0000"
                 required
               />
-              <span class="field-message field-message-error"
-                ><i class="bi bi-exclamation-circle-fill"></i> CNPJ inválido. Verifique o formato.</span
             </div>
             <div class="form-group">
-              <label for="email-empresa">E-mail</label
-              ><input id="email-empresa" type="email" class="input" required />
+              <label for="ramo">Ramo de atuação</label
+              ><input id="ramo" class="input" required />
             </div>
           </div>
           <div class="form-row">
+                        <div class="form-group">
+              <label for="email-empresa">E-mail</label
+              ><input id="email-empresa" type="email" class="input" placeholder="seu@email.com" required />
+            </div>
             <div class="form-group">
               <label for="telefone-empresa">Telefone/Whatsapp</label
               ><input
@@ -107,70 +110,91 @@
                 required
               />
             </div>
-            <div class="form-group">
-              <label for="ramo">Ramo de atuação</label
-              ><input id="ramo" class="input" required />
-            </div>
           </div>
+                    <div class="form-group">
+            <label for="descricao-empresa">Descrição do perfil</label
+            ><textarea id="descricao-empresa" class="input" maxlength="500"></textarea>
+            <span class="field-message">Opcional. Resuma as habilidades e experiências que você procura em até 500 caracteres.</span>
+          </div>
+          </div>
+          <div class="form-group"></div>
+          <div class="card">
           <div class="section-title">Endereço comercial</div>
           <div class="form-row">
             <div class="form-group">
-              <label for="cep-empresa">Comercial - CEP</label
+              <label for="cep-empresa">CEP</label
               ><input id="cep-empresa" class="input" required />
             </div>
             <div class="form-group">
-              <label for="endereco-empresa">Comercial - Endereço</label
-              ><input id="endereco-empresa" class="input" required />
+              <label for="endereco-empresa">Endereço</label
+              ><input id="endereco-empresa" class="input" readonly required />
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="numero-empresa">Comercial - Número</label
-              ><input id="numero-empresa" class="input" required />
+              <label for="numero-empresa">Número</label
+              ><input id="numero-empresa" class="input" type="number" required />
             </div>
             <div class="form-group">
-              <label for="bairro-empresa">Comercial - Bairro</label
-              ><input id="bairro-empresa" class="input" required />
+              <label for="bairro-empresa">Bairro</label
+              ><input id="bairro-empresa" class="input" readonly required />
             </div>
           </div>
           <div class="form-row">
+
             <div class="form-group">
-              <label for="complemento-empresa">Comercial - Complemento</label
+              <label for="cidade-empresa">Cidade</label
+              ><input id="cidade-empresa" class="input" readonly required />
+            </div>
+                        <div class="form-group">
+              <label for="estado-empresa">Estado</label
+              ><input id="estado-empresa" class="input" readonly required />
+            </div>
+          </div>
+                    <div class="form-group">
+              <label for="complemento-empresa">Complemento</label
               ><input id="complemento-empresa" class="input" />
             </div>
-            <div class="form-group">
-              <label for="cidade-empresa">Comercial - Cidade</label
-              ><input id="cidade-empresa" class="input" required />
             </div>
-          </div>
+            <div class="form-group"></div>
+            <div class="card">
+            <div class="section-title">Segurança</div>
           <div class="form-row">
             <div class="form-group">
-              <label for="estado-empresa">Comercial - Estado</label
-              ><input id="estado-empresa" class="input" required />
+              <label for="senha">Senha</label
+              ><div class="relative">
+                <input id="senha" type="password" class="input pr-11" required />
+                <button type="button"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-secondary)]" aria-label="Exibir senha">
+                  <i id="exibeSenha" class="bi bi-eye" aria-hidden="true"></i>
+                </button>
+              </div><span class="field-message">A senha deve possuir no mínimo dez caracteres.</span>
+              <span class="field-message">Deve conter obrigatoriamente: uma letra maiúscula, uma letra minúscula, um número e um caracter especial.</span>
             </div>
             <div class="form-group">
-              <label for="senha-empresa">Senha</label
-              ><input
-                id="senha-empresa"
-                type="password"
-                class="input"
-                required
-              />
+              <label for="senha-confirmacao">Confirmação de senha</label
+              ><div class="relative">
+                <input
+                  id="senha-confirmacao"
+                  type="password"
+                  class="input pr-11"
+                  required
+                />
+                <button
+                  type="button"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-secondary)]"
+                  aria-label="Exibir confirmação de senha"
+                >
+                  <i id="exibeConfirmaSenha" class="bi bi-eye" aria-hidden="true"></i>
+                </button>
+              </div><span class="field-message">As senhas devem coincidir.</span>
             </div>
           </div>
-          <div class="form-group">
-            <label for="status-empresa">Status</label
-            ><select id="status-empresa" class="input">
-              <option>Pendente</option>
-              <option>Ativo</option>
-              <option>Inativo</option></select
-            ><span class="field-message"
-              >Status exibido para contexto administrativo.</span
-            >
-          </div>
+            </div>
           <div class="form-actions">
             <a href="01-homepage.html" class="btn">Voltar</a
             ><button class="btn btn-primary" type="submit">Cadastrar</button>
+          </div>
           </div>
         </form>
       </div>
