@@ -299,7 +299,7 @@ try
     alertBar.removeAttribute("hidden");
     window.scrollTo({top: 0, behavior: "smooth"});
     await sleep(5000);
-    window.location.href = "01-homepage.html";
+    window.location.href = "/pages/01-homepage.html";
     
 } 
 catch (erro) 

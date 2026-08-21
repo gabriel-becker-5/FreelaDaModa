@@ -188,6 +188,13 @@ strong {
   padding: 24px;
   width: 100%;
 }
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 .page-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -1452,6 +1459,59 @@ a:focus-visible {
   }
 }
 
+/* HEADER */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+    background: transparent;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 36px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    font-weight: 800;
+    font-size: 13px;
+    line-height: 1;
+    color: var(--color-primary);
+    letter-spacing: 0.5px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-menu a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-menu a:hover {
+    color: var(--primary-bright);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 /* ---------- Toast ---------- */
 .toast-container {
   position: fixed;
@@ -1720,4 +1780,17 @@ a:focus-visible {
     align-items: flex-start;
     flex-direction: column;
   }
+}
+
+/* Alterna logo exibida conforme tema (dark/white) */
+#logoBlack {
+    display: none;
+}
+
+html[data-theme="dark"] #logoWhite {
+    display: none;
+}
+
+html[data-theme="dark"] #logoBlack {
+    display: block;
 }

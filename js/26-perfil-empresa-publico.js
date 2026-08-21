@@ -291,6 +291,6 @@ for (let index = 0; index < botoesContatar.length; index++)
 {
     botoesContatar[index].addEventListener("click", () => 
     {
-        window.location.href = "11-chat.html";
+        window.location.href = "/pages/11-chat.html";
     });
 }

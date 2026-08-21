@@ -15,13 +15,13 @@ function protegerRota() {
 
     if (!sessao) {
         alert('Acesso restrito! Por favor, faça login para acessar seu painel.');
-        window.location.href = 'login.html';
+        window.location.href = '/pages/02-login.html';
         return;
     }
 
     if (sessao.tipo !== 'freelancers') {
         alert('Este painel é exclusivo para Freelancers. Redirecionando para seu painel de Empresa...');
-        window.location.href = 'dashboard-empresa.html';
+        window.location.href = '/pages/04-dashboard-empresa.html';
     }
 }
 
@@ -93,7 +93,7 @@ async function carregarVagasRecomendadas() {
                     <h3>${vaga.titulo}</h3>
                     <span>${vaga.empresaNome || 'Confecção'} • <strong>${vaga.valor}</strong></span>
                 </div>
-                <a href="vagas.html" class="btn btn-outline-purple" style="padding: 6px 14px; font-size: 0.8rem;">
+                <a href="/pages/07-vagas.html" class="btn btn-outline-purple" style="padding: 6px 14px; font-size: 0.8rem;">
                     Ver Detalhes
                 </a>
             `;
@@ -113,6 +113,6 @@ function initLogout() {
     btnLogout.addEventListener('click', () => {
         sessionStorage.removeItem('usuarioLogado');
         alert('Sessão encerrada com sucesso!');
-        window.location.href = 'login.html';
+        window.location.href = '/pages/02-login.html';
     });
 }

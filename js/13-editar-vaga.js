@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Redireciona de volta para a lista após sucesso
                 setTimeout(() => {
-                    window.location.href = '15-minhas-vagas.html';
+                    window.location.href = '/pages/15-minhas-vagas.html';
                 }, 1500);
             }, 800);
         });

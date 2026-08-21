@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <title>Cadastro Freelancer</title>
+
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -12,7 +14,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="/css/base.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -30,19 +32,33 @@
     </script>
   </head>
   <body>
-    <main class="main">
-      <div class="page-container-md">
-        <div class="header">
-          <h2>Cadastro Freelancer</h2>
-          <div class="header-actions">
+    
+        <header class="header container">
+        <a href="/pages/01-homepage.html" class="logo-area">
+            <img src="/assets/logo-icone-roxo-2048.png" alt="Logo Freela da Moda" class="logo-img" id="logoWhite"/>
+            <img src="/assets/logo-icone-branco-2048.png" alt="Logo Freela da Moda" class="logo-img" id="logoBlack"/>
+            <div class="logo-text">
+                <span>FREELA</span>
+                <span>DA MODA</span>
+            </div>
+        </a>
+
+        <h2>Cadastro Freelancer</h2>
+
+        <div class="header-actions">
             <button
               class="theme-toggle"
               type="button"
               aria-label="Alternar tema claro e escuro"
             ><i class="bi bi-moon-stars" aria-hidden="true"></i></button>
-            <a href="01-homepage.html" class="btn">Voltar</a>
+            <a href="/pages/01-homepage.html" class="btn">Voltar</a>
           </div>
         </div>
+    </header>
+
+
+    <main class="main pt-3">
+      <div class="page-container-md">
         <form class="card">
           <div class="alert alert-success" role="alert" aria-live="polite" hidden>
             Cadastro realizado com sucesso! Você será redirecionado em 5 segundos.
@@ -130,10 +146,15 @@
               ><input id="res-complemento" class="input" />
             </div>
             </div>
+
+
+
             <div class="form-group"></div>
             <div class="card">
-
-            
+          <div class="section-title">Endereço comercial</div>
+          <div class="form-group">
+            <label class="checkbox-label" for="endereco-igual"
+              ><input id="endereco-igual" type="checkbox" /> Endereço comercial
               igual ao residencial</label>
           </div>
           <div class="form-row">
@@ -171,8 +192,10 @@
               ><input id="com-complemento" class="input" />
             </div>
             </div>
+
+
             <div class="form-group"></div>
-            <div class="card">
+            <div class="card page-container-md">
           <div class="section-title">Perfil profissional</div>
           <div class="form-row">
             <div class="form-group">
@@ -303,7 +326,7 @@
           </div>
           </div>
           <div class="form-group"></div>
-          <div class="card">
+          <div class="card page-container-md">
                     <div class="section-title">Segurança</div>
           <div class="form-row">
             <div class="form-group">
@@ -339,13 +362,13 @@
             </div>
           </div>
 </div>
-          <div class="form-actions">
-            <a href="01-homepage.html" class="btn">Voltar</a>
+          <div class="form-actions page-container-md">
+            <a href="/pages/01-homepage.html" class="btn">Voltar</a>
             <button class="btn btn-primary" id="btn-cadastrar" type="submit">Cadastrar</button>
           </div>
         </form>
       </div>
     </main>
-    <script src="../js/05-cadastro-freelancer.js"></script>
+    <script src="/js/05-cadastro-freelancer.js"></script>
   </body>
 </html>
