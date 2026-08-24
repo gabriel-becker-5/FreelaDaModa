@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
 
                 setTimeout(() => {
-                    window.location.href = '15-minhas-vagas.html';
+                    window.location.href = '/pages/15-minhas-vagas.html';
                 }, 1500);
             }, 1000);
         });

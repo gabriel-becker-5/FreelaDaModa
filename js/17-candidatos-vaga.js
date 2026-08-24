@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Simula o tempo de API e redireciona (a tela 19 é o detalhe da OS)
             setTimeout(() => {
-                window.location.href = '19-ordem-servico-detalhe.html';
+                window.location.href = '/pages/19-ordem-servico-detalhe.html';
             }, 2000);
         });
     }

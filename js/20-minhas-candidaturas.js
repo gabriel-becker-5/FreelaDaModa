@@ -187,11 +187,11 @@ function preencherLista(dados)
     
     if(dados.tipo == "Vaga")
     {
-        botaoVisualizar.href = "18-vaga-detalhe.html";
+        botaoVisualizar.href = "/pages/18-vaga-detalhe.html";
     }
     else
     {
-        botaoVisualizar.href = "19-ordem-servico-detalhe.html";
+        botaoVisualizar.href = "/pages/19-ordem-servico-detalhe.html";
     }
 
     divBotoesAcoes.appendChild(botaoVisualizar);
@@ -210,7 +210,7 @@ function preencherLista(dados)
         const botaoAvaliar = document.createElement("a");
         botaoAvaliar.className = "btn";
         botaoAvaliar.textContent = "Avaliar";
-        botaoAvaliar.href = "23-avaliacao-os.html";
+        botaoAvaliar.href = "/pages/23-avaliacao-os.html";
         divBotoesAcoes.appendChild(botaoAvaliar);
     }
 
